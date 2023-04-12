@@ -1,0 +1,8 @@
+name: AvianElements
+version: 1.0
+api-version: 1.19
+authors: [AnonymousBluejay,Soup,Samyed]
+website: passerines.dev
+main: net.passerines.avians.AvianElements
+description: A project
+depend: [ProtocolLib, Vault]

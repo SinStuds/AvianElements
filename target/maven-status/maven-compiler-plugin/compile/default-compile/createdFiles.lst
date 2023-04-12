@@ -1,0 +1,11 @@
+net\passerines\avians\NameSpacedKeys.class
+net\passerines\avians\config\SavesManager.class
+net\passerines\avians\EntityData.class
+net\passerines\avians\AvianElements.class
+net\passerines\avians\PlayerData.class
+net\passerines\avians\util\Chat.class
+net\passerines\avians\config\ConfigManager.class
+net\passerines\avians\EntityMap.class
+net\passerines\avians\util\Util.class
+net\passerines\avians\util\ProtocolLibIntegration.class
+net\passerines\avians\integrations\temp.class
