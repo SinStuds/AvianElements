@@ -158,4 +158,6 @@ public class EntityData {
         this.critExecutionRate = critExecutionRate;
         return this;
     }
+
+
 }

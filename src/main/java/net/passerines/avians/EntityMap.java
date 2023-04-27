@@ -43,6 +43,7 @@ public class EntityMap implements Listener {
                 return;
             }
             ENTITIES.put(event.getEntity(), new EntityData(livingEntity));
+            Util.log("Added: " + livingEntity.getType() + " to ENTITY MAP");
         }
     }
     @EventHandler

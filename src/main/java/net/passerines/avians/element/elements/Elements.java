@@ -1,4 +1,4 @@
-package net.passerines.avians.elements;
+package net.passerines.avians.element.elements;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
@@ -12,7 +12,7 @@ public class Elements {
     public static final Element FIRE_UNYIELDING = new Element("fire_unyielding", "Unyielding Inferno", TextColor.color(255, 0, 0));
     public static final Element FIRE_AZURE = new Element("fire_azure", "Azure Flames", TextColor.color(51, 255, 255));
 
-    private static class Element {
+    public static class Element {
         private final String id;
         private final String name;
         private final TextColor color;
