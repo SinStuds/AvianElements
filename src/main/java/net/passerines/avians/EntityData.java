@@ -1,6 +1,15 @@
 package net.passerines.avians;
 
+import io.lumine.mythic.api.config.MythicConfig;
+import io.lumine.mythic.api.mobs.MobManager;
+import io.lumine.mythic.api.mobs.MythicMob;
+import io.lumine.mythic.bukkit.MythicBukkit;
+import io.lumine.mythic.core.mobs.ActiveMob;
+import net.passerines.avians.util.MythicMobsUtil;
+import org.bukkit.attribute.Attribute;
+import org.bukkit.entity.Damageable;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.LivingEntity;
 
 public class EntityData {
     private double health;
@@ -20,13 +29,21 @@ public class EntityData {
 
     private int critDamage;
     private double critChance;
-
-
-
     private double critExecutionRate;
 
     private Entity entity;
-    public EntityData(Entity entity){
+    public EntityData(LivingEntity entity){
+        this.health = (int) entity.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue();
+    }
+    public EntityData(ActiveMob entity){
+        MythicConfig config = entity.getType().getConfig();
+        this.maxHealth = config.getInt("Health", 100);
+        this.maxDefense = config.getInt("Defense", 10);
+        this.maxMana = config.getInt("Mana", 100);
+        this.speed = config.getInt("Speed", 1);
+        this.critChance = config.getDouble("Crits.rate", 10.0);
+        this.critDamage = config.getInt("Crits.damage", 1);
+        this.critExecutionRate = config.getDouble("Crits.exec", 5);
 
     }
     public double getHealth() {
@@ -158,6 +175,4 @@ public class EntityData {
         this.critExecutionRate = critExecutionRate;
         return this;
     }
-
-
 }

@@ -4,6 +4,7 @@ net\passerines\avians\config\ConfigManager.class
 net\passerines\avians\util\Util.class
 net\passerines\avians\element\elements\Elements$Element.class
 net\passerines\avians\element\elements\Elements.class
+net\passerines\avians\util\MythicMobsUtil.class
 net\passerines\avians\util\ProtocolLibIntegration.class
 net\passerines\avians\element\elementalDamage\fire\FireDamage.class
 net\passerines\avians\integrations\temp.class
@@ -14,5 +15,6 @@ net\passerines\avians\AvianElements.class
 net\passerines\avians\util\Chat.class
 net\passerines\avians\EntityMap.class
 net\passerines\avians\element\elementalDamage\fire\FireDamage$1.class
+net\passerines\avians\element\DamageProcessing\AttackerDamageCalculations.class
 net\passerines\avians\element\elementalDamage\ElementalDamage.class
 net\passerines\avians\element\DamageProcessing\ElementalDamageEvent.class

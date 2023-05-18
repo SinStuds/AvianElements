@@ -11,15 +11,25 @@ public class ElementalDamageEvent extends Event implements Cancellable {
 
     private boolean cancelled;
     private ElementalDamage elementalDamage;
+    private String type;
 
-    public ElementalDamageEvent(ElementalDamage elementalDamage) {
+    public ElementalDamageEvent(ElementalDamage elementalDamage, String type) {
         this.elementalDamage = elementalDamage;
+        this.type = type;
     }
 
+    public ElementalDamage getElementalDamage() {
+        return elementalDamage;
+    }
 
+    public ElementalDamageEvent setElementalDamage(ElementalDamage elementalDamage) {
+        this.elementalDamage = elementalDamage;
+        return this;
+    }
 
-
-
+    public String getType() {
+        return type;
+    }
 
     @Override
     public boolean isCancelled() {

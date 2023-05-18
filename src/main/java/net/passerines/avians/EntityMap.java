@@ -1,6 +1,7 @@
 package net.passerines.avians;
 
 import com.ticxo.modelengine.api.ModelEngineAPI;
+import io.lumine.mythic.bukkit.BukkitAdapter;
 import io.lumine.mythic.bukkit.events.MythicMobSpawnEvent;
 import io.lumine.mythic.core.mobs.ActiveMob;
 import net.passerines.avians.config.SavesManager;
@@ -27,7 +28,7 @@ public class EntityMap implements Listener {
     @EventHandler
     public void onMythicSpawn(MythicMobSpawnEvent event){
         ActiveMob eventEntity = event.getMob();
-        ENTITIES.put(event.getEntity(), new EntityData((Entity) eventEntity));
+        ENTITIES.put(event.getEntity(), new EntityData(eventEntity));
     }
     @EventHandler
     public void onVanillaSpawn(EntitySpawnEvent event){

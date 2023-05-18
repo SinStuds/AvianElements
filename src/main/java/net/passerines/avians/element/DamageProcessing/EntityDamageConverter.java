@@ -1,7 +1,9 @@
 package net.passerines.avians.element.DamageProcessing;
 
+import io.lumine.mythic.core.mobs.ActiveMob;
 import net.passerines.avians.AvianElements;
 import net.passerines.avians.element.elements.Elements;
+import net.passerines.avians.util.MythicMobsUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Damageable;
 import org.bukkit.event.EventHandler;
@@ -15,7 +17,7 @@ public class EntityDamageConverter implements Listener{
     }
     @EventHandler
     public void damageReceiver(EntityDamageByEntityEvent event){
-        if(event.getEntity() instanceof Damageable damageable){
+        if(MythicMobsUtil.getActiveMob(event.getEntity()) != null){
 
         }
     }

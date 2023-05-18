@@ -33,4 +33,5 @@ public class FireDamage extends ElementalDamage {
             }
         };
     }
+
 }

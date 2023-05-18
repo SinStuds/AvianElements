@@ -1,6 +1,5 @@
 package net.passerines.avians;
 
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 
 public class PlayerData extends EntityData{
@@ -8,7 +7,8 @@ public class PlayerData extends EntityData{
 
     private int bladedMastery;
     private int bluntMastery;
-    private int bowMastery;
+    private int pointedMastery;
+    private int rangedMastery;
     private int arcaneMastery;
 
     private int trapDurationBonus;
@@ -42,12 +42,12 @@ public class PlayerData extends EntityData{
         return this;
     }
 
-    public int getBowMastery() {
-        return bowMastery;
+    public int getRangedMastery() {
+        return rangedMastery;
     }
 
-    public PlayerData setBowMastery(int bowMastery) {
-        this.bowMastery = bowMastery;
+    public PlayerData setRangedMastery(int rangedMastery) {
+        this.rangedMastery = rangedMastery;
         return this;
     }
 
@@ -59,6 +59,16 @@ public class PlayerData extends EntityData{
         this.arcaneMastery = arcaneMastery;
         return this;
     }
+
+    public int getPointedMastery() {
+        return pointedMastery;
+    }
+
+    public PlayerData setPointedMastery(int pointedMastery) {
+        this.pointedMastery = pointedMastery;
+        return this;
+    }
+
     public int getTrapDurationBonus() {
         return trapDurationBonus;
     }

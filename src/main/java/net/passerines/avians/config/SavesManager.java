@@ -3,13 +3,11 @@ package net.passerines.avians.config;
 import net.passerines.avians.AvianElements;
 import net.passerines.avians.EntityMap;
 import net.passerines.avians.PlayerData;
-import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.UUID;
 
 public class SavesManager {
     public static PlayerData loadPlayerData(Player player){
@@ -30,7 +28,7 @@ public class SavesManager {
         int masteryArcane = save.getInt("Mastery.Arcane", 1);
         playerData.setBladedMastery(masteryBlade);
         playerData.setBluntMastery(masteryBlunt);
-        playerData.setBowMastery(masteryBow);
+        playerData.setRangedMastery(masteryBow);
         playerData.setArcaneMastery(masteryArcane);
         return playerData;
     }
@@ -44,7 +42,7 @@ public class SavesManager {
         if(EntityMap.get(player) instanceof PlayerData data) {
             config.set("Mastery.Blade", data.getBladedMastery());
             config.set("Mastery.Blunt", data.getBluntMastery());
-            config.set("Mastery.Bow", data.getBowMastery());
+            config.set("Mastery.Bow", data.getRangedMastery());
             config.set("Mastery.Arcane", data.getArcaneMastery());
             try {
                 config.save(saveFile);
