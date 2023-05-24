@@ -79,7 +79,6 @@ public abstract class ElementalDamage {
         if(!isApplied) {
             isApplied = true;
             Bukkit.getPluginManager().callEvent(new ElementalDamageEvent(this));
-
         }
     }
 }

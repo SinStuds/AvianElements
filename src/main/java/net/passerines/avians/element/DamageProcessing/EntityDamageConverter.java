@@ -24,7 +24,7 @@ public class EntityDamageConverter implements Listener{
             ActiveMob activeMob = MythicMobsUtil.getActiveMob(event.getEntity());
             switch(EntityMap.get(event.getEntity()).getElement().getId()){
                 case "fire" -> {
-                    new FireDamage(event.getDamager(), event.getEntity(), (float) event.getDamage(), 10, 60);
+                    new FireDamage(event.getDamager(), event.getEntity(), (float) event.getDamage(), 10, 60).apply();
                 }
             }
         }
