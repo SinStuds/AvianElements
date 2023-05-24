@@ -10,39 +10,41 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 
 public class AttackerDamageCalculations implements Listener {
-    float damage;
-    String type;
     public AttackerDamageCalculations(){
         Bukkit.getPluginManager().registerEvents(this, AvianElements.inst());
     }
-    @EventHandler
+    @EventHandler(priority = EventPriority.LOWEST)
     public void calculateMastery(ElementalDamageEvent event){
-        type = event.getType();
         ElementalDamage elementalDamage = event.getElementalDamage();
         Entity attacker = event.getElementalDamage().getAttacker();
 
         if(attacker instanceof Player player) {
             PlayerData playerData = ((PlayerData) EntityMap.get(player));
-            float hitDamage = elementalDamage.getAmount();
+            float damage = elementalDamage.getAmount();
             switch (event.getType()) {
-                case AttackType.ARCANE -> damage = hitDamage * (100 + playerData.getArcaneMastery())/100;
-                case AttackType.BLADED -> damage = hitDamage * (100 + playerData.getBladedMastery())/100;
-                case AttackType.BLUNTED -> damage = hitDamage * (100 + playerData.getBluntMastery())/100;
-                case AttackType.POLEARMS -> damage = hitDamage * (100 + playerData.getPointedMastery())/100;
-                case AttackType.RANGED -> damage = hitDamage * (100 + playerData.getRangedMastery())/100;
+                case AttackType.ARCANE -> damage = damage * (100 + playerData.getArcaneMastery())/100;
+                case AttackType.BLADED -> damage = damage * (100 + playerData.getBladedMastery())/100;
+                case AttackType.BLUNTED -> damage = damage * (100 + playerData.getBluntMastery())/100;
+                case AttackType.POLEARM -> damage = damage * (100 + playerData.getPointedMastery())/100;
+                case AttackType.RANGED -> damage = damage * (100 + playerData.getRangedMastery())/100;
             }
+            elementalDamage.setAmount(damage);
         }
+
         calculateStats(event);
     }
     public void calculateStats(ElementalDamageEvent event){
         EntityData entityData = EntityMap.get(event.getElementalDamage().getAttacker());
-        switch (type) {
+        float damage = event.getElementalDamage().getAmount();
+        switch (event.getElementalDamage().getType()) {
             case AttackType.ARCANE -> damage = damage * (1000 + entityData.getMaxMana())/1000;
-            case AttackType.BLADED, AttackType.BLUNTED, AttackType.POLEARMS -> damage = damage * (100 + entityData.getStrength())/100;
+            case AttackType.BLADED, AttackType.BLUNTED, AttackType.POLEARM -> damage = damage * (100 + entityData.getStrength())/100;
             case AttackType.RANGED -> damage = damage * (100 + entityData.getDexterity())/100;
         }
+        event.getElementalDamage().setAmount(damage);
     }
 }

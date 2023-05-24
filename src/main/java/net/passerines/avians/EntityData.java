@@ -5,11 +5,14 @@ import io.lumine.mythic.api.mobs.MobManager;
 import io.lumine.mythic.api.mobs.MythicMob;
 import io.lumine.mythic.bukkit.MythicBukkit;
 import io.lumine.mythic.core.mobs.ActiveMob;
+import net.passerines.avians.element.elements.Elements;
 import net.passerines.avians.util.MythicMobsUtil;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Damageable;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
+
+import java.util.Objects;
 
 public class EntityData {
     private double health;
@@ -31,6 +34,8 @@ public class EntityData {
     private double critChance;
     private double critExecutionRate;
 
+    private Elements.Element element;
+
     private Entity entity;
     public EntityData(LivingEntity entity){
         this.health = (int) entity.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue();
@@ -44,7 +49,8 @@ public class EntityData {
         this.critChance = config.getDouble("Crits.rate", 10.0);
         this.critDamage = config.getInt("Crits.damage", 1);
         this.critExecutionRate = config.getDouble("Crits.exec", 5);
-
+        Elements.Element element =  Elements.getElementByID(config.getString("Element"));
+        this.element = Objects.requireNonNullElse(element, Elements.FIRE);
     }
     public double getHealth() {
         return health;
@@ -174,5 +180,13 @@ public class EntityData {
     public EntityData setCritExecutionRate(double critExecutionRate) {
         this.critExecutionRate = critExecutionRate;
         return this;
+    }
+
+    public Elements.Element getElement() {
+        return element;
+    }
+
+    public void setElement(Elements.Element element) {
+        this.element = element;
     }
 }
