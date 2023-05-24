@@ -1,5 +1,8 @@
 package net.passerines.avians;
 
+import net.passerines.avians.element.DamageProcessing.AttackerDamageCalculations;
+import net.passerines.avians.element.DamageProcessing.EntityDamageConverter;
+import net.passerines.avians.element.DamageProcessing.VictimCalculations;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class AvianElements extends JavaPlugin {
@@ -12,9 +15,13 @@ public class AvianElements extends JavaPlugin {
     @Override
     public void onEnable(){
         new EntityMap();
+        new VictimCalculations();
+        new AttackerDamageCalculations();
+        new EntityDamageConverter();
     }
     public static AvianElements inst() {
         return AvianElements.getPlugin(AvianElements.class);
     }
+
 
 }
