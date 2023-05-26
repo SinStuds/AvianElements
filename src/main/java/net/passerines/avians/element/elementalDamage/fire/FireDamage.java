@@ -1,8 +1,7 @@
 package net.passerines.avians.element.elementalDamage.fire;
 
 import net.passerines.avians.element.elementalDamage.ElementalDamage;
-import net.passerines.avians.element.elements.Elements;
-import org.bukkit.Bukkit;
+import net.passerines.avians.element.elements.Element;
 import org.bukkit.entity.Entity;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -12,7 +11,7 @@ public class FireDamage extends ElementalDamage {
     public final int burningPercentage;
     public final int burnTicks;
     public FireDamage(Entity attacker, Entity victim, float amount, int burningPercentage, int burnTicks){
-        super(Elements.FIRE, attacker, victim, amount);
+        super(Element.FIRE, attacker, victim, amount);
         this.burningPercentage = burningPercentage;
         this.burnTicks = burnTicks;
     }

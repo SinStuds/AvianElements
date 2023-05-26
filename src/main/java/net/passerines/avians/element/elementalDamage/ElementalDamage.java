@@ -2,31 +2,28 @@ package net.passerines.avians.element.elementalDamage;
 
 import net.passerines.avians.constants.AttackType;
 import net.passerines.avians.element.DamageProcessing.ElementalDamageEvent;
-import net.passerines.avians.element.elements.Elements;
+import net.passerines.avians.element.elements.Element;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Entity;
-import org.bukkit.event.entity.EntityDamageEvent;
 
 import java.awt.*;
 
 public abstract class ElementalDamage {
-    protected Elements.Element element;
+    protected Element element;
     protected Entity attacker;
     protected Entity victim;
     protected float amount;
 
-
-
     protected String type = AttackType.ENVIRONMENT;
     private boolean isApplied = false;
 
-    public ElementalDamage(Elements.Element element, Entity attacker, Entity victim, float amount){
+    public ElementalDamage(Element element, Entity attacker, Entity victim, float amount){
         this.element = element;
         this.attacker = attacker;
         this.victim = victim;
         this.amount = amount;
     }
-    public ElementalDamage(Elements.Element element, Entity attacker, Entity victim, float amount, String type){
+    public ElementalDamage(Element element, Entity attacker, Entity victim, float amount, String type){
         this(element, attacker, victim, amount);
         this.type = type;
 
@@ -34,11 +31,11 @@ public abstract class ElementalDamage {
 
     public abstract void onHit();
 
-    public Elements.Element getElement() {
+    public Element getElement() {
         return element;
     }
 
-    public ElementalDamage setElement(Elements.Element element) {
+    public ElementalDamage setElement(Element element) {
         this.element = element;
         return this;
     }

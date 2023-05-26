@@ -1,18 +1,11 @@
 package net.passerines.avians;
 
 import io.lumine.mythic.api.config.MythicConfig;
-import io.lumine.mythic.api.mobs.MobManager;
-import io.lumine.mythic.api.mobs.MythicMob;
-import io.lumine.mythic.bukkit.MythicBukkit;
 import io.lumine.mythic.core.mobs.ActiveMob;
-import net.passerines.avians.element.elements.Elements;
-import net.passerines.avians.util.MythicMobsUtil;
+import net.passerines.avians.element.elements.Element;
 import org.bukkit.attribute.Attribute;
-import org.bukkit.entity.Damageable;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
-
-import java.util.Objects;
 
 public class EntityData {
     private double health;
@@ -34,7 +27,7 @@ public class EntityData {
     private double critChance;
     private double critExecutionRate;
 
-    private Elements.Element element;
+    private Element element;
 
     private Entity entity;
     public EntityData(LivingEntity entity){
@@ -49,8 +42,7 @@ public class EntityData {
         this.critChance = config.getDouble("Crits.rate", 10.0);
         this.critDamage = config.getInt("Crits.damage", 1);
         this.critExecutionRate = config.getDouble("Crits.exec", 5);
-        Elements.Element element =  Elements.getElementByID(config.getString("Element"));
-        this.element = Objects.requireNonNullElse(element, Elements.FIRE);
+        this.element = Element.valueOf(config.getString("Element", Element.FIRE.name()));
     }
     public double getHealth() {
         return health;
@@ -182,11 +174,11 @@ public class EntityData {
         return this;
     }
 
-    public Elements.Element getElement() {
+    public Element getElement() {
         return element;
     }
 
-    public void setElement(Elements.Element element) {
+    public void setElement(Element element) {
         this.element = element;
     }
 }
