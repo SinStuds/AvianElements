@@ -12,6 +12,7 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.EntitySpawnEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
@@ -59,7 +60,11 @@ public class EntityMap implements Listener {
         SavesManager.savePlayerData(event.getPlayer());
         Util.log("Saved " + event.getPlayer().getName() + " with UUID of " + event.getPlayer().getUniqueId());
     }
-
+    @EventHandler
+    public void onDeathEntity(EntityDeathEvent event){
+        remove(event.getEntity());
+        Util.log("Removed: " + event.getEntity().getType() + " from ENTITY MAP");
+    }
 
     public static EntityData get(Entity entity) {
         if(ModelEngineAPI.isModeledEntity(entity.getUniqueId())) {
