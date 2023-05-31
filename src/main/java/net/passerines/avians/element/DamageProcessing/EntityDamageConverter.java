@@ -27,6 +27,7 @@ public class EntityDamageConverter implements Listener{
                     new FireDamage(event.getDamager(), event.getEntity(), (float) event.getDamage(), 10, 60).apply();
                     Util.log(event.getDamager().getType().name() + " dealt " + event.getDamage() + " damage to " + event.getEntity().getName());
                 }
+
             }
         }
     }

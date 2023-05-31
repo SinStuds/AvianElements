@@ -1,6 +1,7 @@
 package net.passerines.avians.element.DamageProcessing;
 
 import net.passerines.avians.AvianElements;
+import net.passerines.avians.DeathEvent;
 import net.passerines.avians.EntityData;
 import net.passerines.avians.EntityMap;
 import net.passerines.avians.constants.AttackType;
@@ -20,6 +21,12 @@ public class VictimCalculations implements Listener {
 
     public void subtractHealth (ElementalDamageEvent event){
         EntityData entityData = EntityMap.get(event.getElementalDamage().getVictim());
-        entityData.setHealth(entityData.getHealth() - event.getElementalDamage().getAmount());
+        if(entityData.getHealth() - event.getElementalDamage().getAmount() <= 0){
+            DeathEvent death = new DeathEvent(event.getElementalDamage());
+            death.apply();
+        }
+        else{
+            entityData.setHealth(entityData.getHealth() - event.getElementalDamage().getAmount());
+        }
     }
 }

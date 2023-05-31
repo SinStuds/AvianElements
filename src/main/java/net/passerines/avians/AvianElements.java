@@ -18,6 +18,7 @@ public class AvianElements extends JavaPlugin {
         new VictimCalculations();
         new AttackerDamageCalculations();
         new EntityDamageConverter();
+        new OnEntityDeathEvent();
     }
     public static AvianElements inst() {
         return AvianElements.getPlugin(AvianElements.class);
