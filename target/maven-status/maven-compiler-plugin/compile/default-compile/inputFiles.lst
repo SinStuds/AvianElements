@@ -1,8 +1,8 @@
 C:\Users\Alex\Documents\GitHub\AvianElements\src\main\java\net\passerines\avians\constants\AttackType.java
 C:\Users\Alex\Documents\GitHub\AvianElements\src\main\java\net\passerines\avians\element\DamageProcessing\AttackerDamageCalculations.java
 C:\Users\Alex\Documents\GitHub\AvianElements\src\main\java\net\passerines\avians\util\ProtocolLibIntegration.java
+C:\Users\Alex\Documents\GitHub\AvianElements\src\main\java\net\passerines\avians\OnEntityDeathEvent.java
 C:\Users\Alex\Documents\GitHub\AvianElements\src\main\java\net\passerines\avians\element\elementalDamage\ElementalDamage.java
-C:\Users\Alex\Documents\GitHub\AvianElements\src\main\java\net\passerines\avians\element\elements\Elements.java
 C:\Users\Alex\Documents\GitHub\AvianElements\src\main\java\net\passerines\avians\NameSpacedKeys.java
 C:\Users\Alex\Documents\GitHub\AvianElements\src\main\java\net\passerines\avians\PlayerData.java
 C:\Users\Alex\Documents\GitHub\AvianElements\src\main\java\net\passerines\avians\util\Chat.java
@@ -10,10 +10,12 @@ C:\Users\Alex\Documents\GitHub\AvianElements\src\main\java\net\passerines\avians
 C:\Users\Alex\Documents\GitHub\AvianElements\src\main\java\net\passerines\avians\EntityMap.java
 C:\Users\Alex\Documents\GitHub\AvianElements\src\main\java\net\passerines\avians\element\DamageProcessing\VictimCalculations.java
 C:\Users\Alex\Documents\GitHub\AvianElements\src\main\java\net\passerines\avians\util\Util.java
+C:\Users\Alex\Documents\GitHub\AvianElements\src\main\java\net\passerines\avians\DeathEvent.java
 C:\Users\Alex\Documents\GitHub\AvianElements\src\main\java\net\passerines\avians\element\DamageProcessing\EntityDamageConverter.java
 C:\Users\Alex\Documents\GitHub\AvianElements\src\main\java\net\passerines\avians\EntityData.java
 C:\Users\Alex\Documents\GitHub\AvianElements\src\main\java\net\passerines\avians\AvianElements.java
 C:\Users\Alex\Documents\GitHub\AvianElements\src\main\java\net\passerines\avians\element\DamageProcessing\ElementalDamageEvent.java
+C:\Users\Alex\Documents\GitHub\AvianElements\src\main\java\net\passerines\avians\element\elements\Element.java
 C:\Users\Alex\Documents\GitHub\AvianElements\src\main\java\net\passerines\avians\element\elementalDamage\fire\FireDamage.java
 C:\Users\Alex\Documents\GitHub\AvianElements\src\main\java\net\passerines\avians\config\ConfigManager.java
 C:\Users\Alex\Documents\GitHub\AvianElements\src\main\java\net\passerines\avians\integrations\temp.java

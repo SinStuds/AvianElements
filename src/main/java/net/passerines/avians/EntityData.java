@@ -36,6 +36,7 @@ public class EntityData {
     public EntityData(ActiveMob entity){
         MythicConfig config = entity.getType().getConfig();
         this.maxHealth = config.getInt("Health", 100);
+        this.health = maxHealth;
         this.maxDefense = config.getInt("Defense", 10);
         this.maxMana = config.getInt("Mana", 100);
         this.speed = config.getInt("Speed", 1);
