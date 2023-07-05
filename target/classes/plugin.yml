@@ -6,3 +6,14 @@ website: passerines.dev
 main: net.passerines.avians.AvianElements
 description: A project
 depend: [ProtocolLib, Vault]
+commands:
+  itemgive:
+    description: gives items
+    permission: avian.admin
+permissions:
+  avian.admin:
+    description: da biggest bird
+    default: op
+  avian.user:
+    description: a little birb
+    default: true

@@ -1,4 +1,6 @@
 net\passerines\avians\OnEntityDeathEvent.class
+net\passerines\avians\commands\ReloadFilesCommand.class
+net\passerines\avians\commands\StatsCommand.class
 net\passerines\avians\EntityData.class
 net\passerines\avians\DeathEvent.class
 net\passerines\avians\util\MythicMobsUtil.class
@@ -16,9 +18,12 @@ net\passerines\avians\PlayerData.class
 net\passerines\avians\config\ConfigManager.class
 net\passerines\avians\util\Util.class
 net\passerines\avians\util\ProtocolLibIntegration.class
+net\passerines\avians\commands\ItemsCommand.class
 net\passerines\avians\element\elementalDamage\fire\FireDamage.class
 net\passerines\avians\integrations\temp.class
+net\passerines\avians\itemcreation\ItemConfig.class
 net\passerines\avians\element\DamageProcessing\EntityDamageConverter.class
 net\passerines\avians\util\Chat.class
 net\passerines\avians\element\DamageProcessing\AttackerDamageCalculations.class
+net\passerines\avians\itemcreation\ItemManager.class
 net\passerines\avians\element\elementalDamage\ElementalDamage.class
