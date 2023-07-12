@@ -1,5 +1,6 @@
 package net.passerines.avians.itemcreation;
 
+import net.kyori.adventure.text.Component;
 import net.passerines.avians.util.Chat;
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
@@ -35,5 +36,11 @@ public class ItemConfig {
         itemMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
         item.setItemMeta(itemMeta);
         return item;
+    }
+    public ItemMeta updateLore(ItemStack item){
+        ItemMeta itemMeta = item.getItemMeta();
+        List<Component> lore = Chat.formatC(this.lore);
+        itemMeta.lore(lore);
+        return itemMeta;
     }
 }
