@@ -3,6 +3,7 @@ package net.passerines.avians.itemcreation;
 
 
 import net.passerines.avians.config.ConfigManager;
+import net.passerines.avians.constants.AttackType;
 import net.passerines.avians.itemcreation.weaponcreation.BladedConfig;
 import net.passerines.avians.itemcreation.weaponcreation.WeaponConfig;
 import net.passerines.avians.util.Util;
@@ -25,7 +26,7 @@ public class ItemManager {
                 ItemConfig newItem;
                 switch (type){
                     default -> newItem = new ItemConfig(section);
-                    case("bladed") -> newItem = new BladedConfig(section);
+                    case(AttackType.BLADED) -> newItem = new BladedConfig(section);
                 }
                 if(type.equalsIgnoreCase("weapon")){
 

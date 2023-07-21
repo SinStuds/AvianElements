@@ -8,24 +8,24 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 
 public class EntityData {
-    private double health;
+    private float health;
     private int maxHealth;
-    private double healthRegen;
+    private float healthRegen;
 
-    private double mana;
+    private float mana;
     private int maxMana;
-    private double manaRegen;
+    private float manaRegen;
 
     private int defense;
     private int maxDefense;
 
     private int strength;
     private int dexterity;
-    private double speed;
+    private float speed;
 
     private int critDamage;
-    private double critChance;
-    private double critExecutionRate;
+    private float critChance;
+    private float critExecutionRate;
 
     private Element element;
 
@@ -40,9 +40,9 @@ public class EntityData {
         this.maxDefense = config.getInt("Defense", 10);
         this.maxMana = config.getInt("Mana", 100);
         this.speed = config.getInt("Speed", 1);
-        this.critChance = config.getDouble("Crits.rate", 10.0);
+        this.critChance = (float) config.getDouble("Crits.rate", 10.0);
         this.critDamage = config.getInt("Crits.damage", 1);
-        this.critExecutionRate = config.getDouble("Crits.exec", 5);
+        this.critExecutionRate = (float) config.getDouble("Crits.exec", 5);
         this.element = Element.valueOf(config.getString("Element", Element.FIRE.name()));
     }
     public double getHealth() {
@@ -50,7 +50,7 @@ public class EntityData {
     }
 
     public EntityData setHealth(double health) {
-        this.health = health;
+        this.health = (float) health;
         return this;
     }
 
@@ -70,7 +70,7 @@ public class EntityData {
     }
 
     public EntityData setHealthRegen(double healthRegen) {
-        this.healthRegen = healthRegen;
+        this.healthRegen = (float) healthRegen;
         return this;
     }
 
@@ -79,7 +79,7 @@ public class EntityData {
     }
 
     public EntityData setMana(double mana) {
-        this.mana = mana;
+        this.mana = (float) mana;
         return this;
     }
 
@@ -99,7 +99,7 @@ public class EntityData {
     }
 
     public EntityData setManaRegen(double manaRegen) {
-        this.manaRegen = manaRegen;
+        this.manaRegen = (float) manaRegen;
         return this;
     }
 
@@ -144,7 +144,7 @@ public class EntityData {
     }
 
     public EntityData setSpeed(double speed) {
-        this.speed = speed;
+        this.speed = (float) speed;
         return this;
     }
 
@@ -162,7 +162,7 @@ public class EntityData {
     }
 
     public EntityData setCritChance(double critChance) {
-        this.critChance = critChance;
+        this.critChance = (float) critChance;
         return this;
     }
 
@@ -171,7 +171,7 @@ public class EntityData {
     }
 
     public EntityData setCritExecutionRate(double critExecutionRate) {
-        this.critExecutionRate = critExecutionRate;
+        this.critExecutionRate = (float) critExecutionRate;
         return this;
     }
 

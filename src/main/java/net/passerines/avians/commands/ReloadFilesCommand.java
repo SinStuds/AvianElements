@@ -11,7 +11,7 @@ public class ReloadFilesCommand implements CommandExecutor {
     private AvianElements plugin = AvianElements.inst();
 
     public ReloadFilesCommand() {
-        plugin.getCommand("raload").setExecutor(this);
+        plugin.getCommand("AEReload").setExecutor(this);
     }
 
     @Override

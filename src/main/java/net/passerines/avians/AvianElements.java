@@ -1,6 +1,7 @@
 package net.passerines.avians;
 
 import net.passerines.avians.commands.ItemsCommand;
+import net.passerines.avians.commands.ReloadFilesCommand;
 import net.passerines.avians.config.ConfigManager;
 import net.passerines.avians.element.DamageProcessing.AttackerDamageCalculations;
 import net.passerines.avians.element.DamageProcessing.EntityDamageConverter;
@@ -26,6 +27,7 @@ public class AvianElements extends JavaPlugin {
         new EntityDamageConverter();
         new OnEntityDeathEvent();
         new ItemsCommand();
+        new ReloadFilesCommand();
     }
     public static AvianElements inst() {
         return AvianElements.getPlugin(AvianElements.class);

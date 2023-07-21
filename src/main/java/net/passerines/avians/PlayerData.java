@@ -1,6 +1,11 @@
 package net.passerines.avians;
 
+import net.passerines.avians.constants.Stats;
+import net.passerines.avians.itemcreation.ItemConfig;
+import net.passerines.avians.itemcreation.weaponcreation.WeaponConfig;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.persistence.PersistentDataType;
 
 public class PlayerData extends EntityData{
 
@@ -22,6 +27,10 @@ public class PlayerData extends EntityData{
 
     public PlayerData(Player player) {
         super(player);
+    }
+    public void calculate(ItemStack item){
+        setMaxHealth((int) item.getItemMeta().getPersistentDataContainer().get(Stats.HEALTH.getKey(), Stats.HEALTH.getValue()));
+        setMaxHealth((int) item.getItemMeta().getPersistentDataContainer().get(Stats.HEALTH_REGEN.getKey(), Stats.HEALTH_REGEN.getValue()));
     }
 
     public int getBladedMastery() {

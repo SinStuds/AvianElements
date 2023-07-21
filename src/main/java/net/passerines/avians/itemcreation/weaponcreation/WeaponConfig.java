@@ -1,6 +1,7 @@
 package net.passerines.avians.itemcreation.weaponcreation;
 
 import net.kyori.adventure.text.Component;
+import net.passerines.avians.constants.Stats;
 import net.passerines.avians.itemcreation.ItemConfig;
 import net.passerines.avians.util.Chat;
 import org.bukkit.configuration.ConfigurationSection;
@@ -35,7 +36,7 @@ public abstract class WeaponConfig extends ItemConfig {
         WEAPONSTATS.add("Strength: <Strength> | Defense: <Defense> | Dexterity: <Dexterity>");
         WEAPONSTATS.add(("Movement Speed: <Speed>"));
         WEAPONSTATS.add("Crit DMG: <CritDMG> | Crit Chance: <CritChance>");
-        WEAPONSTATS.add("Execution Rate: <ExectutionRate>");
+        WEAPONSTATS.add("Execution Rate: <ExecutionRate>");
     }
     public WeaponConfig(ConfigurationSection config) {
         super(config);
@@ -58,6 +59,20 @@ public abstract class WeaponConfig extends ItemConfig {
     public ItemStack generate(){
         ItemStack item = super.generate();
         ItemMeta itemMeta = updateLore(item);
+        itemMeta.getPersistentDataContainer().set(Stats.CHIP_PERCENTAGE.getKey(), Stats.CHIP_PERCENTAGE.getValue(), chipPercentage);
+        itemMeta.getPersistentDataContainer().set(Stats.CRITCHANCE.getKey(), Stats.CRITCHANCE.getValue(), critChance);
+        itemMeta.getPersistentDataContainer().set(Stats.CRITDAMAGE.getKey(), Stats.CRITDAMAGE.getValue(), critDamage);
+        itemMeta.getPersistentDataContainer().set(Stats.CRITEXECUTIONRATE.getKey(), Stats.CRITEXECUTIONRATE.getValue(), critExecutionRate);
+        itemMeta.getPersistentDataContainer().set(Stats.DEFENSE.getKey(), Stats.DEFENSE.getValue(), defense);
+        itemMeta.getPersistentDataContainer().set(Stats.DEXTERITY.getKey(), Stats.DEXTERITY.getValue(), dexterity);
+        itemMeta.getPersistentDataContainer().set(Stats.HEALTH.getKey(), Stats.HEALTH.getValue(), health);
+        itemMeta.getPersistentDataContainer().set(Stats.HEALTH_REGEN.getKey(), Stats.HEALTH_REGEN.getValue(), healthRegen);
+        itemMeta.getPersistentDataContainer().set(Stats.MANA.getKey(), Stats.MANA.getValue(), mana);
+        itemMeta.getPersistentDataContainer().set(Stats.MANA_REGEN.getKey(), Stats.MANA_REGEN.getValue(), manaRegen);
+        itemMeta.getPersistentDataContainer().set(Stats.PEN.getKey(), Stats.PEN.getValue(), pen);
+        itemMeta.getPersistentDataContainer().set(Stats.SPEED.getKey(), Stats.SPEED.getValue(), speed);
+        itemMeta.getPersistentDataContainer().set(Stats.STRENGTH.getKey(), Stats.STRENGTH.getValue(), strength);
+        itemMeta.getPersistentDataContainer().set(Stats.WEIGHT.getKey(), Stats.WEIGHT.getValue(), weight);
         item.setItemMeta(itemMeta);
         return item;
     }
@@ -74,98 +89,98 @@ public abstract class WeaponConfig extends ItemConfig {
                     counter1++;
                 }
                 counter2++;
-                line.replaceAll("<Weight>", String.valueOf(weight));
+                line = line.replaceAll("<Weight>", String.valueOf(weight) + " KG");
             }
             if(line.contains("<Pen>")){
                 if(pen > 0){
                     counter1++;
                 }
                 counter2++;
-                line.replaceAll("<Pen>", String.valueOf(pen));
+                line = line.replaceAll("<Pen>", String.valueOf(pen));
             }
             if(line.contains("<ChipPercentage>")){
                 if(chipPercentage > 0){
                     counter1++;
                 }
                 counter2++;
-                line.replaceAll("<ChipPercentage>", String.valueOf(chipPercentage));
+                line = line.replaceAll("<ChipPercentage>", String.valueOf(chipPercentage));
             }
             if(line.contains("<Health>")){
                 if(health > 0){
                     counter1++;
                 }
                 counter2++;
-                line.replaceAll("<Health>", String.valueOf(health));
+                line = line.replaceAll("<Health>", String.valueOf(health));
             }
             if(line.contains("<HealthRegen>")){
                 if(healthRegen > 0){
                     counter1++;
                 }
                 counter2++;
-                line.replaceAll("<HealthRegen>", String.valueOf(healthRegen));
+                line = line.replaceAll("<HealthRegen>", String.valueOf(healthRegen));
             }
             if(line.contains("<Mana>")){
                 if(mana > 0){
                     counter1++;
                 }
                 counter2++;
-                line.replaceAll("<Mana>", String.valueOf(mana));
+                line = line.replaceAll("<Mana>", String.valueOf(mana));
             }
             if(line.contains("<ManaRegen>")){
                 if(manaRegen > 0){
                     counter1++;
                 }
                 counter2++;
-                line.replaceAll("<ManaRegen>", String.valueOf(manaRegen));
+                line = line.replaceAll("<ManaRegen>", String.valueOf(manaRegen));
             }
             if(line.contains("<Strength>")){
                 if(strength > 0){
                     counter1++;
                 }
                 counter2++;
-                line.replaceAll("<Strength>", String.valueOf(strength));
+                line = line.replaceAll("<Strength>", String.valueOf(strength));
             }
             if(line.contains("<Defense>")){
                 if(defense > 0){
                     counter1++;
                 }
                 counter2++;
-                line.replaceAll("<Defense>", String.valueOf(defense));
+                line = line.replaceAll("<Defense>", String.valueOf(defense));
             }
             if(line.contains("<Dexterity>")){
                 if(dexterity > 0){
                     counter1++;
                 }
                 counter2++;
-                line.replaceAll("<Dexterity>", String.valueOf(dexterity));
+                line = line.replaceAll("<Dexterity>", String.valueOf(dexterity));
             }
             if(line.contains("<Speed>")){
                 if(speed > 0){
                     counter1++;
                 }
                 counter2++;
-                line.replaceAll("<Speed>", String.valueOf(speed));
+                line = line.replaceAll("<Speed>", String.valueOf(speed));
             }
             if(line.contains("<CritDamage>")){
                 if(critDamage > 0){
                     counter1++;
                 }
                 counter2++;
-                line.replaceAll("<CritDamage>", String.valueOf(strength));
+                line = line.replaceAll("<CritDamage>", String.valueOf(critDamage));
             }
             if(line.contains("<CritChance>")){
                 if(critChance > 0){
                     counter1++;
                 }
                 counter2++;
-                line.replaceAll("<CritChance>", String.valueOf(critChance));
+                line = line.replaceAll("<CritChance>", String.valueOf(critChance));
             }
             if(line.contains("<ExecutionRate>")){
                 if(critExecutionRate > 0){
                     counter1++;
                 }
                 counter2++;
-                line.replaceAll("<ExecutionRate>", String.valueOf(critExecutionRate));
+                line = line.replaceAll("<ExecutionRate>", String.valueOf(critExecutionRate));
             }
             if(counter1 > 0 || counter2 == 0){
                 weaponStats.add(line);
