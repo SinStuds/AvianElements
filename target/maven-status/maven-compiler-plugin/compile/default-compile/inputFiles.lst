@@ -15,13 +15,16 @@ C:\Users\sonku\Documents\AvianElements\AvianElements\src\main\java\net\passerine
 C:\Users\sonku\Documents\AvianElements\AvianElements\src\main\java\net\passerines\avians\commands\StatsCommand.java
 C:\Users\sonku\Documents\AvianElements\AvianElements\src\main\java\net\passerines\avians\element\DamageProcessing\ElementalDamageEvent.java
 C:\Users\sonku\Documents\AvianElements\AvianElements\src\main\java\net\passerines\avians\util\Chat.java
+C:\Users\sonku\Documents\AvianElements\AvianElements\src\main\java\net\passerines\avians\events\ItemChangeEvent.java
 C:\Users\sonku\Documents\AvianElements\AvianElements\src\main\java\net\passerines\avians\EntityMap.java
 C:\Users\sonku\Documents\AvianElements\AvianElements\src\main\java\net\passerines\avians\element\elements\Element.java
 C:\Users\sonku\Documents\AvianElements\AvianElements\src\main\java\net\passerines\avians\itemcreation\ItemManager.java
 C:\Users\sonku\Documents\AvianElements\AvianElements\src\main\java\net\passerines\avians\EntityData.java
 C:\Users\sonku\Documents\AvianElements\AvianElements\src\main\java\net\passerines\avians\element\DamageProcessing\EntityDamageConverter.java
+C:\Users\sonku\Documents\AvianElements\AvianElements\src\main\java\net\passerines\avians\util\Pair.java
 C:\Users\sonku\Documents\AvianElements\AvianElements\src\main\java\net\passerines\avians\constants\Stats.java
 C:\Users\sonku\Documents\AvianElements\AvianElements\src\main\java\net\passerines\avians\itemcreation\weaponcreation\BladedConfig.java
+C:\Users\sonku\Documents\AvianElements\AvianElements\src\main\java\net\passerines\avians\events\EquipmentChangeHandler.java
 C:\Users\sonku\Documents\AvianElements\AvianElements\src\main\java\net\passerines\avians\element\elementalDamage\ElementalDamage.java
 C:\Users\sonku\Documents\AvianElements\AvianElements\src\main\java\net\passerines\avians\util\ProtocolLibIntegration.java
 C:\Users\sonku\Documents\AvianElements\AvianElements\src\main\java\net\passerines\avians\constants\AttackType.java
