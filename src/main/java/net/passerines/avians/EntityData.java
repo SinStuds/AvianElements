@@ -2,6 +2,7 @@ package net.passerines.avians;
 
 import io.lumine.mythic.api.config.MythicConfig;
 import io.lumine.mythic.core.mobs.ActiveMob;
+import net.passerines.avians.element.elementalDamage.StatusEffects;
 import net.passerines.avians.element.elements.Element;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Entity;
@@ -26,6 +27,7 @@ public class EntityData {
     private int critDamage;
     private float critChance;
     private float critExecutionRate;
+    private StatusEffects statusEffects;
 
     private Element element;
 
@@ -58,11 +60,10 @@ public class EntityData {
         return maxHealth;
     }
 
-    public EntityData setMaxHealth(int maxHealth) {
+    public void setMaxHealth(int maxHealth) {
         if(maxHealth >= 5) {
             this.maxHealth = maxHealth;
         }
-        return this;
     }
 
     public double getHealthRegen() {
@@ -174,6 +175,7 @@ public class EntityData {
         this.critExecutionRate = (float) critExecutionRate;
         return this;
     }
+    public StatusEffects getStatusEffects(){return statusEffects;}
 
     public Element getElement() {
         return element;

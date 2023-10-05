@@ -11,12 +11,12 @@ import java.util.List;
 
 
 public class BladedConfig extends WeaponConfig{
-    private final int sharpness;
-    private final int initialSharpness;
+    private final float sharpness;
+    private final float initialSharpness;
     public BladedConfig(ConfigurationSection config) {
         super(config);
         sharpness = config.getInt("sharpness", 100);
-        initialSharpness = (int) config.get("initialSharpness", sharpness);
+        initialSharpness =  config.getInt("initialSharpness", (int) sharpness);
     }
     @Override
     public ItemStack generate(){

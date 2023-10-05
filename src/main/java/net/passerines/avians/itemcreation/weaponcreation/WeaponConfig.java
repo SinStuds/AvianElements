@@ -14,30 +14,38 @@ import java.util.Iterator;
 import java.util.List;
 
 public abstract class WeaponConfig extends ItemConfig {
-    private final int weight;
-    private final int pen;
-    private final int chipPercentage;
-    private double health;
-    private double healthRegen;
-    private double mana;
-    private double manaRegen;
-    private int defense;
-    private int strength;
-    private int dexterity;
-    private double speed;
-    private int critDamage;
-    private double critChance;
-    private double critExecutionRate;
+    private final float weight;
+    private final float pen;
+    private final float chipPercentage;
+    private int health;
+    private float healthRegen;
+    private float mana;
+    private float manaRegen;
+    private float defense;
+    private float strength;
+    private float dexterity;
+    private float speed;
+    private float critDamage;
+    private float critChance;
+    private float critExecutionRate;
     private static final List<String> WEAPONSTATS = new ArrayList<>();
     static{
-        WEAPONSTATS.add("Weight: <Weight> | Pen: <Pen> | Chip Percentage: <ChipPercentage>");
+        /*WEAPONSTATS.add("Weight: <Weight> | Pen: <Pen> | Chip Percentage: <ChipPercentage>");
         WEAPONSTATS.add("Health: <Health> | Health Regen: <HealthRegen");
         WEAPONSTATS.add("Mana: <Mana> | Mana Regen: <ManaRegen>");
         WEAPONSTATS.add("Strength: <Strength> | Defense: <Defense> | Dexterity: <Dexterity>");
         WEAPONSTATS.add(("Movement Speed: <Speed>"));
         WEAPONSTATS.add("Crit DMG: <CritDMG> | Crit Chance: <CritChance>");
-        WEAPONSTATS.add("Execution Rate: <ExecutionRate>");
+        WEAPONSTATS.add("Execution Rate: <ExecutionRate>");*/
+        WEAPONSTATS.add("<weight_pen_chip>");
+        WEAPONSTATS.add("<health_healthregen>");
+        WEAPONSTATS.add("<mana_manaregen>");
+        WEAPONSTATS.add("<strength_defense_dexterity>");
+        WEAPONSTATS.add("<movementspeed>");
+        WEAPONSTATS.add("<critdmg_critchance>");
+        WEAPONSTATS.add("<executionrate>");
     }
+
     public WeaponConfig(ConfigurationSection config) {
         super(config);
         weight = config.getInt("weight", 10);
@@ -52,8 +60,8 @@ public abstract class WeaponConfig extends ItemConfig {
         dexterity = config.getInt("dexterity",0);
         speed = config.getInt("speed", 0);
         critDamage = config.getInt("critDmg", 0);
-        critChance = config.getDouble("critChance", 0);
-        critExecutionRate = config.getDouble("critExecutionRate",0);
+        critChance = (float) config.getDouble("critChance", 0);
+        critExecutionRate = (float) config.getDouble("critExecutionRate",0);
     }
     @Override
     public ItemStack generate(){
@@ -82,18 +90,39 @@ public abstract class WeaponConfig extends ItemConfig {
         List<Component> lore = super.updateLore(item).lore();
         List<String> weaponStats = new ArrayList<>();
         for (String line : WEAPONSTATS){
-            int counter1 = 0;
+            String nLine = "";
+            if(line.contains("<weight_pen_chip>")){
+
+                if(weight>0){
+                    nLine += "Weight: " + weight + " | ";
+                }
+                else{
+                    nLine += "Weight: Weightless | ";
+                }
+                if(pen>0){
+                    nLine += "Pen: " + pen + " | ";
+                }
+                if(chipPercentage>0) {
+                    nLine += "Chip Percentage: " + chipPercentage + " | ";
+                }
+            }
+            if(nLine.length()>2) {
+                nLine = nLine.substring(0, nLine.length() - 3);
+                weaponStats.add(nLine);
+            }
+            /*int counter1 = 0;
             int counter2 = 0;
             if(line.contains("<Weight>")){
                 if(weight > 0){
                     counter1++;
                 }
                 counter2++;
-                line = line.replaceAll("<Weight>", String.valueOf(weight) + " KG");
+                line = line.replaceAll("<Weight>", weight + " KG");
             }
             if(line.contains("<Pen>")){
                 if(pen > 0){
                     counter1++;
+
                 }
                 counter2++;
                 line = line.replaceAll("<Pen>", String.valueOf(pen));
@@ -184,7 +213,7 @@ public abstract class WeaponConfig extends ItemConfig {
             }
             if(counter1 > 0 || counter2 == 0){
                 weaponStats.add(line);
-            }
+            }*/
         }
         lore.addAll(Chat.formatC(weaponStats));
         itemMeta.lore(lore);

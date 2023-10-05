@@ -11,6 +11,8 @@ import net.passerines.avians.element.DamageProcessing.VictimCalculations;
 import net.passerines.avians.itemcreation.ItemManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.io.File;
+
 public class AvianElements extends JavaPlugin {
 
     @Override
@@ -23,6 +25,13 @@ public class AvianElements extends JavaPlugin {
     }
     @Override
     public void onEnable(){
+        if(!AvianElements.inst().getDataFolder().isDirectory()){
+            AvianElements.inst().getDataFolder().mkdir();
+        }
+        String str = AvianElements.inst().getDataFolder().getPath()+File.separator+"items";
+        if(!new File(str).isDirectory()){
+            new File(str).mkdir();
+        }
         new EntityMap();
         new VictimCalculations();
         new AttackerDamageCalculations();

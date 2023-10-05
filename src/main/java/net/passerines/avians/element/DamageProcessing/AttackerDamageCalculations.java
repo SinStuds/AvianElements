@@ -8,6 +8,7 @@ import net.passerines.avians.constants.AttackType;
 import net.passerines.avians.element.elementalDamage.ElementalDamage;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -21,10 +22,9 @@ public class AttackerDamageCalculations implements Listener {
     public void calculateMastery(ElementalDamageEvent event){
         ElementalDamage elementalDamage = event.getElementalDamage();
         Entity attacker = event.getElementalDamage().getAttacker();
-
+        float damage = elementalDamage.getAmount();
         if(attacker instanceof Player player) {
             PlayerData playerData = ((PlayerData) EntityMap.get(player));
-            float damage = elementalDamage.getAmount();
             switch (event.getType()) {
                 case AttackType.ARCANE -> damage = damage * (100 + playerData.getArcaneMastery())/100;
                 case AttackType.BLADED -> damage = damage * (100 + playerData.getBladedMastery())/100;
@@ -32,8 +32,13 @@ public class AttackerDamageCalculations implements Listener {
                 case AttackType.POLEARM -> damage = damage * (100 + playerData.getPointedMastery())/100;
                 case AttackType.RANGED -> damage = damage * (100 + playerData.getRangedMastery())/100;
             }
-            elementalDamage.setAmount(damage);
         }
+        else{
+            if(event.getElementalDamage().getAttacker() instanceof LivingEntity){
+
+            }
+        }
+        elementalDamage.setAmount(damage);
 
         calculateStats(event);
     }

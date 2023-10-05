@@ -24,6 +24,7 @@ net\passerines\avians\util\ProtocolLibIntegration.class
 net\passerines\avians\commands\ItemsCommand.class
 net\passerines\avians\element\elementalDamage\fire\FireDamage.class
 net\passerines\avians\integrations\temp.class
+net\passerines\avians\element\elementalDamage\StatusEffects.class
 net\passerines\avians\itemcreation\ItemConfig.class
 net\passerines\avians\element\DamageProcessing\EntityDamageConverter.class
 net\passerines\avians\events\ItemChangeEvent.class

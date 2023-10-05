@@ -3,13 +3,13 @@ package net.passerines.avians.events;
 import net.passerines.avians.AvianElements;
 import net.passerines.avians.EntityMap;
 import net.passerines.avians.PlayerData;
+import net.passerines.avians.events.slotstatsystem.SlotHashmap;
 import net.passerines.avians.util.Util;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerItemHeldEvent;
@@ -68,7 +68,9 @@ public class EquipmentChangeHandler implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent event){
         Player player = event.getPlayer();
-        Bukkit.getPluginManager().callEvent(new ItemChangeEvent(player, player.getInventory().getItemInMainHand()));
+        PlayerData playerData = (PlayerData) EntityMap.get(player);
+        playerData.getSlotHashmap().setAllSlots();
+        
     }
 
     @EventHandler

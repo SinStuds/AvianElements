@@ -1,6 +1,7 @@
 package net.passerines.avians;
 
 import net.passerines.avians.constants.Stats;
+import net.passerines.avians.events.slotstatsystem.SlotHashmap;
 import net.passerines.avians.itemcreation.ItemConfig;
 import net.passerines.avians.itemcreation.weaponcreation.WeaponConfig;
 import org.bukkit.entity.Player;
@@ -9,7 +10,7 @@ import org.bukkit.persistence.PersistentDataType;
 
 public class PlayerData extends EntityData{
 
-
+    private SlotHashmap slotHashmap;
     private int bladedMastery;
     private int bluntMastery;
     private int pointedMastery;
@@ -29,9 +30,20 @@ public class PlayerData extends EntityData{
         super(player);
     }
     public void calculate(ItemStack item){
-        setMaxHealth((int) item.getItemMeta().getPersistentDataContainer().get(Stats.HEALTH.getKey(), Stats.HEALTH.getValue()));
-        setMaxHealth((int) item.getItemMeta().getPersistentDataContainer().get(Stats.HEALTH_REGEN.getKey(), Stats.HEALTH_REGEN.getValue()));
+        setMaxHealth(getMaxHealth() + (int) item.getItemMeta().getPersistentDataContainer().get(Stats.HEALTH.getKey(), Stats.HEALTH.getValue()));
+        setHealthRegen(getHealth() + (int) item.getItemMeta().getPersistentDataContainer().get(Stats.HEALTH_REGEN.getKey(), Stats.HEALTH_REGEN.getValue()));
+        setStrength(getStrength() + (int) item.getItemMeta().getPersistentDataContainer().get(Stats.STRENGTH.getKey(), Stats.STRENGTH.getValue()));
+        setDexterity(getDexterity() + (int) item.getItemMeta().getPersistentDataContainer().get(Stats.DEXTERITY.getKey(), Stats.DEXTERITY.getValue()));
+        setMaxDefense(getDefense() + (int) item.getItemMeta().getPersistentDataContainer().get(Stats.DEFENSE.getKey(), Stats.DEFENSE.getValue()));
     }
+    public void uncalculate(ItemStack item){
+        setMaxHealth(getMaxHealth() - ((int) item.getItemMeta().getPersistentDataContainer().get(Stats.HEALTH.getKey(), Stats.HEALTH.getValue())));
+        setHealthRegen(getHealthRegen() -(int) item.getItemMeta().getPersistentDataContainer().get(Stats.HEALTH_REGEN.getKey(), Stats.HEALTH_REGEN.getValue()));
+        setStrength(getStrength() - (int) item.getItemMeta().getPersistentDataContainer().get(Stats.STRENGTH.getKey(), Stats.STRENGTH.getValue()));
+        setDexterity(getDexterity() - (int) item.getItemMeta().getPersistentDataContainer().get(Stats.DEXTERITY.getKey(), Stats.DEXTERITY.getValue()));
+        setMaxDefense(getDefense() - (int) item.getItemMeta().getPersistentDataContainer().get(Stats.DEFENSE.getKey(), Stats.DEFENSE.getValue()));
+    }
+
 
     public int getBladedMastery() {
         return bladedMastery;
@@ -139,5 +151,9 @@ public class PlayerData extends EntityData{
     public PlayerData setMaxMinions(int maxMinions) {
         this.maxMinions = maxMinions;
         return this;
+    }
+
+    public SlotHashmap getSlotHashmap() {
+        return slotHashmap;
     }
 }

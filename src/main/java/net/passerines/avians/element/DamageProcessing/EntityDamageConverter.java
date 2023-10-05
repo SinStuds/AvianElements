@@ -18,17 +18,16 @@ public class EntityDamageConverter implements Listener{
     }
     @EventHandler
     public void damageReceiver(EntityDamageByEntityEvent event){
-        event.setCancelled(true);
-
         if(MythicMobsUtil.getActiveMob(event.getEntity()) != null){
             ActiveMob activeMob = MythicMobsUtil.getActiveMob(event.getEntity());
             switch(EntityMap.get(event.getEntity()).getElement()){
                 case FIRE -> {
-                    new FireDamage(event.getDamager(), event.getEntity(), (float) event.getDamage(), 10, 60).apply();
+                    new FireDamage(event.getDamager(), activeMob.getEntity().getBukkitEntity(), (float) event.getDamage(), 10, 60).apply();
                     Util.log(event.getDamager().getType().name() + " dealt " + event.getDamage() + " damage to " + event.getEntity().getName());
                 }
 
             }
         }
+        event.setDamage(0);
     }
 }
