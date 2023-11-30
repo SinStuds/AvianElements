@@ -17,7 +17,7 @@ public class EntityData {
     private int maxMana;
     private float manaRegen;
 
-    private int defense;
+    private float defense;
     private int maxDefense;
 
     private int strength;
@@ -66,13 +66,12 @@ public class EntityData {
         }
     }
 
-    public double getHealthRegen() {
+    public float getHealthRegen() {
         return healthRegen;
     }
 
-    public EntityData setHealthRegen(double healthRegen) {
-        this.healthRegen = (float) healthRegen;
-        return this;
+    public void setHealthRegen(float healthRegen) {
+        this.healthRegen = healthRegen;
     }
 
     public double getMana() {
@@ -104,7 +103,7 @@ public class EntityData {
         return this;
     }
 
-    public int getDefense() {
+    public float getDefense() {
         return defense;
     }
 

@@ -22,11 +22,11 @@ public abstract class WeaponConfig extends ItemConfig {
     private float healthRegen;
     private float mana;
     private float manaRegen;
-    private float defense;
-    private float strength;
-    private float dexterity;
+    private int defense;
+    private int strength;
+    private int dexterity;
     private float speed;
-    private float critDamage;
+    private int critDamage;
     private float critChance;
     private float critExecutionRate;
     private static final List<String> WEAPONSTATS = new ArrayList<>();

@@ -24,24 +24,25 @@ public class PlayerData extends EntityData{
     private int minionDefenseBonus;
     private int minionElemenalBonus;
     private int maxMinions;
-
+    private Player player;
 
     public PlayerData(Player player) {
         super(player);
+        this.player = player;
+        slotHashmap = new SlotHashmap(player);
     }
     public void calculate(ItemStack item){
-        setMaxHealth(getMaxHealth() + (int) item.getItemMeta().getPersistentDataContainer().get(Stats.HEALTH.getKey(), Stats.HEALTH.getValue()));
-        setHealthRegen(getHealth() + (int) item.getItemMeta().getPersistentDataContainer().get(Stats.HEALTH_REGEN.getKey(), Stats.HEALTH_REGEN.getValue()));
-        setStrength(getStrength() + (int) item.getItemMeta().getPersistentDataContainer().get(Stats.STRENGTH.getKey(), Stats.STRENGTH.getValue()));
-        setDexterity(getDexterity() + (int) item.getItemMeta().getPersistentDataContainer().get(Stats.DEXTERITY.getKey(), Stats.DEXTERITY.getValue()));
-        setMaxDefense(getDefense() + (int) item.getItemMeta().getPersistentDataContainer().get(Stats.DEFENSE.getKey(), Stats.DEFENSE.getValue()));
-    }
-    public void uncalculate(ItemStack item){
-        setMaxHealth(getMaxHealth() - ((int) item.getItemMeta().getPersistentDataContainer().get(Stats.HEALTH.getKey(), Stats.HEALTH.getValue())));
-        setHealthRegen(getHealthRegen() -(int) item.getItemMeta().getPersistentDataContainer().get(Stats.HEALTH_REGEN.getKey(), Stats.HEALTH_REGEN.getValue()));
-        setStrength(getStrength() - (int) item.getItemMeta().getPersistentDataContainer().get(Stats.STRENGTH.getKey(), Stats.STRENGTH.getValue()));
-        setDexterity(getDexterity() - (int) item.getItemMeta().getPersistentDataContainer().get(Stats.DEXTERITY.getKey(), Stats.DEXTERITY.getValue()));
-        setMaxDefense(getDefense() - (int) item.getItemMeta().getPersistentDataContainer().get(Stats.DEFENSE.getKey(), Stats.DEFENSE.getValue()));
+        if(item != null && item.getItemMeta() != null) {
+            player.sendMessage("Max Health " + (getMaxHealth() + item.getItemMeta().getPersistentDataContainer().getOrDefault(Stats.HEALTH.getKey(), Stats.HEALTH.getValue(),0)));
+            player.sendMessage("Health Regen " + (getHealthRegen() + item.getItemMeta().getPersistentDataContainer().getOrDefault(Stats.HEALTH_REGEN.getKey(), Stats.HEALTH_REGEN.getValue(),0f)));
+            player.sendMessage("Strength " + (getStrength() + item.getItemMeta().getPersistentDataContainer().getOrDefault(Stats.STRENGTH.getKey(), Stats.STRENGTH.getValue(),0)));
+            player.sendMessage("Max Defense " + (getMaxDefense() + item.getItemMeta().getPersistentDataContainer().getOrDefault(Stats.DEFENSE.getKey(), Stats.DEFENSE.getValue(),0)));
+            setMaxHealth(getMaxHealth() + item.getItemMeta().getPersistentDataContainer().getOrDefault(Stats.HEALTH.getKey(), Stats.HEALTH.getValue(),0));
+            setHealthRegen(getHealthRegen() + item.getItemMeta().getPersistentDataContainer().getOrDefault(Stats.HEALTH_REGEN.getKey(), Stats.HEALTH_REGEN.getValue(),0f));
+            setStrength(getStrength() + item.getItemMeta().getPersistentDataContainer().getOrDefault(Stats.STRENGTH.getKey(), Stats.STRENGTH.getValue(),0));
+            setDexterity(getDexterity() + item.getItemMeta().getPersistentDataContainer().getOrDefault(Stats.DEXTERITY.getKey(), Stats.DEXTERITY.getValue(),0));
+            setMaxDefense(getMaxDefense() + item.getItemMeta().getPersistentDataContainer().getOrDefault(Stats.DEFENSE.getKey(), Stats.DEFENSE.getValue(),0));
+        }
     }
 
 

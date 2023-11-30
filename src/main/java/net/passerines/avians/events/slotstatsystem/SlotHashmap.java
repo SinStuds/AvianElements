@@ -10,9 +10,6 @@ import java.util.HashMap;
 
 public class  SlotHashmap {
     private final Player player;
-    public SlotHashmap(Player player){
-        this.player=player;
-    }
     public enum Slot {
         HELMET,
         CHESTPLATE,
@@ -23,6 +20,10 @@ public class  SlotHashmap {
 
     }
     private HashMap<Slot, ItemStack> slots;
+    public SlotHashmap(Player player){
+        this.player=player;
+        slots = new HashMap<>();
+    }
     public ItemStack getItemAtSlot(Slot slot){
         return slots.get(slot);
     }
