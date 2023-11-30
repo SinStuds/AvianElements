@@ -56,8 +56,8 @@ public class EntityMap implements Listener {
     }
     @EventHandler
     public void onPlayerLeave(PlayerQuitEvent event){
-        ENTITIES.remove(event.getPlayer());
         SavesManager.savePlayerData(event.getPlayer());
+        ENTITIES.remove(event.getPlayer());
         Util.log("Saved " + event.getPlayer().getName() + " with UUID of " + event.getPlayer().getUniqueId());
     }
     @EventHandler

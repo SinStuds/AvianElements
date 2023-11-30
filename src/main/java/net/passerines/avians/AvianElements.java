@@ -8,6 +8,7 @@ import net.passerines.avians.constants.Stats;
 import net.passerines.avians.element.DamageProcessing.AttackerDamageCalculations;
 import net.passerines.avians.element.DamageProcessing.EntityDamageConverter;
 import net.passerines.avians.element.DamageProcessing.VictimCalculations;
+import net.passerines.avians.events.ItemChangeListener;
 import net.passerines.avians.itemcreation.ItemManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -40,6 +41,7 @@ public class AvianElements extends JavaPlugin {
         new ItemsCommand();
         new ReloadFilesCommand();
         new StatsCommand();
+        new ItemChangeListener();
     }
     public static AvianElements inst() {
         return AvianElements.getPlugin(AvianElements.class);

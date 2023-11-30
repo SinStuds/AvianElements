@@ -8,6 +8,7 @@ import org.bukkit.persistence.PersistentDataType;
 public class Stats {
     public final static Pair<NamespacedKey, PersistentDataType> SHARPNESS = new Pair<>(Util.getNamespacedKey("Sharpness"), PersistentDataType.FLOAT);
     public final static Pair<NamespacedKey, PersistentDataType> MAX_SHARPNESS = new Pair<>(Util.getNamespacedKey("MaxSharpness"), PersistentDataType.FLOAT);
+    public final static Pair<NamespacedKey, PersistentDataType> RANGE = new Pair<>(Util.getNamespacedKey("MaxSharpness"), PersistentDataType.DOUBLE);
 
 
     public final static Pair<NamespacedKey, PersistentDataType> WEIGHT = new Pair<>(Util.getNamespacedKey("Weight"), PersistentDataType.FLOAT);

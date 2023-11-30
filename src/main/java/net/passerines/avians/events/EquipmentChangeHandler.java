@@ -1,5 +1,6 @@
 package net.passerines.avians.events;
 
+import com.destroystokyo.paper.event.player.PlayerArmorChangeEvent;
 import net.passerines.avians.AvianElements;
 import net.passerines.avians.EntityMap;
 import net.passerines.avians.PlayerData;
@@ -19,14 +20,17 @@ import org.bukkit.inventory.ItemStack;
 
 public class EquipmentChangeHandler implements Listener {
     public EquipmentChangeHandler(){
-
+        Bukkit.getPluginManager().registerEvents(this, AvianElements.inst());
+    }
+    @EventHandler
+    public void onArmorChange(PlayerArmorChangeEvent event) {
+        Bukkit.getPluginManager().callEvent(new ItemChangeEvent(event.getPlayer(), event.getNewItem()));
     }
     @EventHandler
     public void playerSwitchItem(PlayerSwapHandItemsEvent event){
         Player player = event.getPlayer();
         //PlayerMap.PLAYERS.get(player).calculateHand(event.getMainHandItem());
         Bukkit.getPluginManager().callEvent(new ItemChangeEvent(player, event.getMainHandItem()));
-
     }
     @EventHandler
     public void onDrop(PlayerDropItemEvent event){
@@ -70,15 +74,13 @@ public class EquipmentChangeHandler implements Listener {
         Player player = event.getPlayer();
         PlayerData playerData = (PlayerData) EntityMap.get(player);
         playerData.getSlotHashmap().setAllSlots();
-        
     }
 
     @EventHandler
     public void onItemChange(ItemChangeEvent itemChangeEvent){
         Player player = itemChangeEvent.getPlayer();
-        ItemStack item = itemChangeEvent.getItemStack();
         PlayerData playerData = (PlayerData) EntityMap.get(player);
-        playerData.calculate(item);
+        playerData.getSlotHashmap().setAllSlots();
         Util.log("OnItemChangeEventCalled");
     }
 }

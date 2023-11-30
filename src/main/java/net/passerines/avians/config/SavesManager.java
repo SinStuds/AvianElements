@@ -3,6 +3,7 @@ package net.passerines.avians.config;
 import net.passerines.avians.AvianElements;
 import net.passerines.avians.EntityMap;
 import net.passerines.avians.PlayerData;
+import net.passerines.avians.util.Util;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 
@@ -44,10 +45,12 @@ public class SavesManager {
             config.set("Mastery.Blunt", data.getBluntMastery());
             config.set("Mastery.Bow", data.getRangedMastery());
             config.set("Mastery.Arcane", data.getArcaneMastery());
+            config.set("Stats.Health", data.getHealth());
+            config.set("Stats.Mana", data.getMana());
             try {
                 config.save(saveFile);
             } catch (IOException e) {
-                //say yeet
+                Util.log("IOException occurred Saving Player Failed");
             }
         }
     }

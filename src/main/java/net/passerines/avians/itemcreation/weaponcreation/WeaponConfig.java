@@ -1,6 +1,7 @@
 package net.passerines.avians.itemcreation.weaponcreation;
 
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.passerines.avians.constants.Stats;
 import net.passerines.avians.itemcreation.ItemConfig;
 import net.passerines.avians.util.Chat;
@@ -100,10 +101,19 @@ public abstract class WeaponConfig extends ItemConfig {
                     nLine += "Weight: Weightless | ";
                 }
                 if(pen>0){
-                    nLine += "Pen: " + pen + " | ";
+                    nLine += "&ePen: " + pen + " | ";
                 }
                 if(chipPercentage>0) {
-                    nLine += "Chip Percentage: " + chipPercentage + " | ";
+                    nLine += "&7Chip Percentage: " + chipPercentage + " | ";
+                }
+            }
+            if(line.contains("<health_healthregen>")){
+                if(health>0){
+                    nLine += "&cHealth: " + weight + " | ";
+                }
+
+                if(healthRegen>0){
+                    nLine += "&4Health Regen: " + pen + " | ";
                 }
             }
             if(nLine.length()>2) {

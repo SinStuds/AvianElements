@@ -1,4 +1,6 @@
 package net.passerines.avians.events;
+import net.passerines.avians.EntityMap;
+import net.passerines.avians.PlayerData;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
@@ -13,6 +15,7 @@ public class ItemChangeEvent extends Event {
     public ItemChangeEvent(Player player, ItemStack itemStack){
         this.player = player;
         this.itemStack = itemStack;
+
     }
 
     @Override

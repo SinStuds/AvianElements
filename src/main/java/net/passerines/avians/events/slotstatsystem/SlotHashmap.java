@@ -8,7 +8,7 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.HashMap;
 
-public class SlotHashmap {
+public class  SlotHashmap {
     private final Player player;
     public SlotHashmap(Player player){
         this.player=player;
@@ -23,6 +23,9 @@ public class SlotHashmap {
 
     }
     private HashMap<Slot, ItemStack> slots;
+    public ItemStack getItemAtSlot(Slot slot){
+        return slots.get(slot);
+    }
     public void setSlots(Slot slot, ItemStack item) {
         slots.put(slot, item);
     }
