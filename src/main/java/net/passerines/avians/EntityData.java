@@ -2,6 +2,7 @@ package net.passerines.avians;
 
 import io.lumine.mythic.api.config.MythicConfig;
 import io.lumine.mythic.core.mobs.ActiveMob;
+import lombok.Getter;
 import net.passerines.avians.element.elementalDamage.StatusEffects;
 import net.passerines.avians.element.elements.Element;
 import org.bukkit.attribute.Attribute;
@@ -107,7 +108,7 @@ public class EntityData {
         return defense;
     }
 
-    public EntityData setDefense(int defense) {
+    public EntityData setDefense(float defense) {
         this.defense = defense;
         return this;
     }
@@ -157,12 +158,12 @@ public class EntityData {
         return this;
     }
 
-    public double getCritChance() {
+    public float getCritChance() {
         return critChance;
     }
 
-    public EntityData setCritChance(double critChance) {
-        this.critChance = (float) critChance;
+    public EntityData setCritChance(float critChance) {
+        this.critChance = critChance;
         return this;
     }
 

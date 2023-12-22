@@ -11,7 +11,9 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityPickupItemEvent;
 import org.bukkit.event.inventory.InventoryDragEvent;
+import org.bukkit.event.inventory.InventoryPickupItemEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerItemHeldEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -70,10 +72,24 @@ public class EquipmentChangeHandler implements Listener {
         }
     }
     @EventHandler
+    public void pickupEvent(EntityPickupItemEvent event){
+        if(event.getEntity() instanceof Player player) {
+            if (player.getInventory().getItemInMainHand().getType().isAir()) {
+                Bukkit.getScheduler().scheduleSyncDelayedTask(AvianElements.inst(), () -> {
+                    if (!player.getInventory().getItemInMainHand().getType().isAir()) {
+                        //PlayerMap.PLAYERS.get(player).calculateHand(player.getInventory().getItemInMainHand());
+                        Bukkit.getPluginManager().callEvent(new ItemChangeEvent(player, player.getInventory().getItemInMainHand()));
+                    }
+                });
+            }
+        }
+    }
+
+    @EventHandler
     public void onJoin(PlayerJoinEvent event){
         Player player = event.getPlayer();
         PlayerData playerData = (PlayerData) EntityMap.get(player);
-        playerData.getSlotHashmap().setAllSlots();
+        Bukkit.getPluginManager().callEvent(new ItemChangeEvent(player, player.getInventory().getItemInMainHand()));
     }
 
     @EventHandler

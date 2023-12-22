@@ -6,6 +6,7 @@ net\passerines\avians\DeathEvent.class
 net\passerines\avians\itemcreation\weaponcreation\BladedConfig.class
 net\passerines\avians\util\MythicMobsUtil.class
 net\passerines\avians\events\slotstatsystem\SlotHashmap$Slot.class
+net\passerines\avians\DeathEventListener.class
 net\passerines\avians\events\EquipmentChangeHandler.class
 net\passerines\avians\events\ItemChangeListener.class
 net\passerines\avians\element\elements\Element.class
@@ -17,12 +18,14 @@ net\passerines\avians\EntityMap.class
 net\passerines\avians\element\elementalDamage\fire\FireDamage$1.class
 net\passerines\avians\element\DamageProcessing\EntityDamageConverter$1.class
 net\passerines\avians\element\DamageProcessing\ElementalDamageEvent.class
+net\passerines\avians\util\CooldownRunnable.class
 net\passerines\avians\util\Pair.class
 net\passerines\avians\itemcreation\weaponcreation\PolearmConfig.class
 net\passerines\avians\constants\AttackType.class
 net\passerines\avians\PlayerData.class
 net\passerines\avians\config\ConfigManager.class
 net\passerines\avians\util\Util.class
+net\passerines\avians\util\Cooldown.class
 net\passerines\avians\util\ProtocolLibIntegration.class
 net\passerines\avians\events\slotstatsystem\SlotHashmap.class
 net\passerines\avians\commands\ItemsCommand.class

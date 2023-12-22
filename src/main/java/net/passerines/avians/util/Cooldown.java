@@ -1,7 +1,6 @@
-package net.passerines.derp.util;
+package net.passerines.avians.util;
 
-import net.passerines.derp.Derp;
-import net.passerines.derp.math.Pair;
+import net.passerines.avians.AvianElements;
 import org.bukkit.Bukkit;
 
 import java.util.HashMap;
@@ -25,7 +24,7 @@ public class Cooldown<T> {
                 Bukkit.getScheduler().cancelTask(cooldowns.get(target).getKey());
             }
             cooldowns.put(target, new Pair<>(
-                    Bukkit.getScheduler().scheduleSyncDelayedTask(Derp.inst(), () -> {
+                    Bukkit.getScheduler().scheduleSyncDelayedTask(AvianElements.inst(), () -> {
                         cooldowns.remove(target);
                     }, ticks), Bukkit.getCurrentTick() + ticks
             ));

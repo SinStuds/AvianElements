@@ -33,15 +33,18 @@ public class PlayerData extends EntityData{
     }
     public void calculate(ItemStack item){
         if(item != null && item.getItemMeta() != null) {
-            player.sendMessage("Max Health " + (getMaxHealth() + item.getItemMeta().getPersistentDataContainer().getOrDefault(Stats.HEALTH.getKey(), Stats.HEALTH.getValue(),0)));
+            /*player.sendMessage("Max Health " + (getMaxHealth() + item.getItemMeta().getPersistentDataContainer().getOrDefault(Stats.HEALTH.getKey(), Stats.HEALTH.getValue(),0)));
             player.sendMessage("Health Regen " + (getHealthRegen() + item.getItemMeta().getPersistentDataContainer().getOrDefault(Stats.HEALTH_REGEN.getKey(), Stats.HEALTH_REGEN.getValue(),0f)));
             player.sendMessage("Strength " + (getStrength() + item.getItemMeta().getPersistentDataContainer().getOrDefault(Stats.STRENGTH.getKey(), Stats.STRENGTH.getValue(),0)));
-            player.sendMessage("Max Defense " + (getMaxDefense() + item.getItemMeta().getPersistentDataContainer().getOrDefault(Stats.DEFENSE.getKey(), Stats.DEFENSE.getValue(),0)));
+            player.sendMessage("Max Defense " + (getMaxDefense() + item.getItemMeta().getPersistentDataContainer().getOrDefault(Stats.DEFENSE.getKey(), Stats.DEFENSE.getValue(),0)));*/
             setMaxHealth(getMaxHealth() + item.getItemMeta().getPersistentDataContainer().getOrDefault(Stats.HEALTH.getKey(), Stats.HEALTH.getValue(),0));
             setHealthRegen(getHealthRegen() + item.getItemMeta().getPersistentDataContainer().getOrDefault(Stats.HEALTH_REGEN.getKey(), Stats.HEALTH_REGEN.getValue(),0f));
             setStrength(getStrength() + item.getItemMeta().getPersistentDataContainer().getOrDefault(Stats.STRENGTH.getKey(), Stats.STRENGTH.getValue(),0));
             setDexterity(getDexterity() + item.getItemMeta().getPersistentDataContainer().getOrDefault(Stats.DEXTERITY.getKey(), Stats.DEXTERITY.getValue(),0));
             setMaxDefense(getMaxDefense() + item.getItemMeta().getPersistentDataContainer().getOrDefault(Stats.DEFENSE.getKey(), Stats.DEFENSE.getValue(),0));
+            setCritChance(getCritChance() + item.getItemMeta().getPersistentDataContainer().getOrDefault(Stats.CRITCHANCE.getKey(), Stats.CRITCHANCE.getValue(),0f));
+            setCritDamage(getCritDamage() + item.getItemMeta().getPersistentDataContainer().getOrDefault(Stats.CRITDAMAGE.getKey(), Stats.CRITDAMAGE.getValue(),0));
+            setCritExecutionRate(getCritExecutionRate() + item.getItemMeta().getPersistentDataContainer().getOrDefault(Stats.CRITEXECUTIONRATE.getKey(), Stats.CRITEXECUTIONRATE.getValue(),0f));
         }
     }
 

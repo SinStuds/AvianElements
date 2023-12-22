@@ -27,6 +27,9 @@ public class SavesManager {
         int masteryBlunt = save.getInt("Mastery.Blunt", 1);
         int masteryBow = save.getInt("Mastery.Bow", 1);
         int masteryArcane = save.getInt("Mastery.Arcane", 1);
+        playerData.setHealth(persistentHealth);
+        playerData.setDefense((float) persistentDefense);
+        playerData.setMana(persistentMana);
         playerData.setBladedMastery(masteryBlade);
         playerData.setBluntMastery(masteryBlunt);
         playerData.setRangedMastery(masteryBow);

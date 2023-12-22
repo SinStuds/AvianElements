@@ -23,6 +23,7 @@ public class StatsCommand implements CommandExecutor {
             sender.sendMessage("Max Health: " + playerData.getMaxHealth() + " Health: " + playerData.getHealth() + " Health Regen: " + playerData.getHealthRegen());
             sender.sendMessage("Max Defense: " + playerData.getMaxDefense() + " Defense: " + playerData.getDefense());
             sender.sendMessage("Max Mana: " + playerData.getMaxMana() + " Mana: " + playerData.getMana() + " Mana Regen: " + playerData.getManaRegen());
+            sender.sendMessage("Crit Chance: " + playerData.getCritChance() + " Crit Damage: " + playerData.getCritDamage() + " Crit Execution Rate: " + playerData.getCritExecutionRate());
             sender.sendMessage("Strength: " + playerData.getStrength() + " Dexterity: " + playerData.getDexterity() + " Speed: " + playerData.getSpeed());
         }
         return false;
