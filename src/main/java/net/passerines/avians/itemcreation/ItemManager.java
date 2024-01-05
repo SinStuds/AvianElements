@@ -5,15 +5,11 @@ package net.passerines.avians.itemcreation;
 import net.passerines.avians.config.ConfigManager;
 import net.passerines.avians.constants.AttackType;
 import net.passerines.avians.itemcreation.weaponcreation.BladedConfig;
-import net.passerines.avians.itemcreation.weaponcreation.WeaponConfig;
-import net.passerines.avians.util.Util;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.inventory.ItemStack;
 
 import java.io.File;
 import java.util.HashMap;
-import java.util.Locale;
 
 public class ItemManager {
     public static HashMap<String, ItemConfig> ITEM_MAP = new HashMap<>();

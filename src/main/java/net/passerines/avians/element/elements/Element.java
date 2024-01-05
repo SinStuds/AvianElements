@@ -5,35 +5,35 @@ import net.kyori.adventure.text.format.TextColor;
 import net.passerines.avians.util.Chat;
 
 public enum Element {
+   FIRE("Fire", TextColor.color(255, 128, 0)),
+   FIRE_SULFUREOUS("Sulfureous Fire", TextColor.color(255, 255, 0)),
+   FIRE_UNYIELDING("Unyielding Inferno", TextColor.color(255, 0, 0)),
+   FIRE_AZURE("Azure Flames", TextColor.color(51, 255, 255));
 
-    //  To get the element by ID, use Element.valueOf(String name)
-    //      name is case sensitive, use full uppercase such as "FIRE"
-    //  To get name by enum use .name()
-    //      for example, Element.FIRE.name()
-    //  To compare enums, use ==
-    //      for example, event.getElement()==Element.FIRE
+   private final String name;
+   private final TextColor color;
+   private final Component displayName;
 
-    FIRE("Fire", TextColor.color(255, 128, 0)),
-    FIRE_SULFUREOUS("Sulfureous Fire", TextColor.color(255, 255, 0)),
-    FIRE_UNYIELDING("Unyielding Inferno", TextColor.color(255, 0, 0)),
-    FIRE_AZURE("Azure Flames", TextColor.color(51, 255, 255));
+   Element(String name, TextColor color) {
+      this.name = name;
+      this.color = color;
+      this.displayName = Chat.formatC(name).color(color);
+   }
 
-    private final String name;
-    private final TextColor color;
-    private final Component displayName;
-    Element(String name, TextColor color) {
-        this.name = name;
-        this.color = color;
-        displayName = Chat.formatC(name).color(color);
-    }
-    public String getName() {
-        return name;
-    }
-    public TextColor getColor() {
-        return color;
-    }
-    public Component getDisplayName() {
-        return displayName;
-    }
+   public String getName() {
+      return this.name;
+   }
+
+   public TextColor getColor() {
+      return this.color;
+   }
+
+   public Component getDisplayName() {
+      return this.displayName;
+   }
+
+   // $FF: synthetic method
+   private static Element[] $values() {
+      return new Element[]{FIRE, FIRE_SULFUREOUS, FIRE_UNYIELDING, FIRE_AZURE};
+   }
 }
-

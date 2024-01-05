@@ -1,7 +1,6 @@
 package net.passerines.avians.itemcreation.weaponcreation;
 
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.passerines.avians.constants.Stats;
 import net.passerines.avians.itemcreation.ItemConfig;
 import net.passerines.avians.util.Chat;
@@ -10,25 +9,23 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
 
-public abstract class WeaponConfig extends ItemConfig {
+public abstract class AttributedItemConfig extends ItemConfig {
     private final float weight;
     private final float pen;
     private final float chipPercentage;
-    private int health;
-    private float healthRegen;
-    private float mana;
-    private float manaRegen;
-    private int defense;
-    private int strength;
-    private int dexterity;
-    private float speed;
-    private int critDamage;
-    private float critChance;
-    private float critExecutionRate;
+    private final int health;
+    private final float healthRegen;
+    private final float mana;
+    private final float manaRegen;
+    private final int defense;
+    private final int strength;
+    private final int dexterity;
+    private final float speed;
+    private final int critDamage;
+    private final float critChance;
+    private final float critExecutionRate;
     private static final List<String> WEAPONSTATS = new ArrayList<>();
     static{
         /*WEAPONSTATS.add("Weight: <Weight> | Pen: <Pen> | Chip Percentage: <ChipPercentage>");
@@ -47,7 +44,7 @@ public abstract class WeaponConfig extends ItemConfig {
         WEAPONSTATS.add("<executionrate>");
     }
 
-    public WeaponConfig(ConfigurationSection config) {
+    public AttributedItemConfig(ConfigurationSection config) {
         super(config);
         weight = config.getInt("weight", 10);
         pen = config.getInt("pen", 0);
@@ -109,11 +106,11 @@ public abstract class WeaponConfig extends ItemConfig {
             }
             if(line.contains("<health_healthregen>")){
                 if(health>0){
-                    nLine += "&cHealth: " + weight + " | ";
+                    nLine += "&cHealth: " + health + " | ";
                 }
 
                 if(healthRegen>0){
-                    nLine += "&4Health Regen: " + pen + " | ";
+                    nLine += "&4Health Regen: " + healthRegen + " | ";
                 }
             }
             if(nLine.length()>2) {

@@ -7,8 +7,8 @@ import java.util.HashMap;
 
 public class CooldownRunnable<T> {
 
-    private int defaultCooldown;
-    private HashMap<T, Pair<Integer, Integer>> cooldowns;
+    private final int defaultCooldown;
+    private final HashMap<T, Pair<Integer, Integer>> cooldowns;
 
     public CooldownRunnable(int defaultCooldownTicks) {
         cooldowns = new HashMap<>();

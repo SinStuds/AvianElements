@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ItemsCommand implements CommandExecutor, TabCompleter {
-    private AvianElements plugin = AvianElements.inst();
+    private final AvianElements plugin = AvianElements.inst();
     public ItemsCommand(){
         plugin.getCommand("itemgive").setExecutor(this);
         plugin.getCommand("itemgive").setTabCompleter(this);

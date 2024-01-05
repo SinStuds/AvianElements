@@ -1,4 +1,4 @@
-net\passerines\avians\OnEntityDeathEvent.class
+net\passerines\avians\itemcreation\armorcreation\ArmorConfig.class
 net\passerines\avians\commands\ReloadFilesCommand.class
 net\passerines\avians\commands\StatsCommand.class
 net\passerines\avians\EntityData.class
@@ -13,11 +13,14 @@ net\passerines\avians\element\elements\Element.class
 net\passerines\avians\NameSpacedKeys.class
 net\passerines\avians\config\SavesManager.class
 net\passerines\avians\element\DamageProcessing\VictimCalculations.class
+net\passerines\avians\naturalhealth\NaturalHealthRegen.class
 net\passerines\avians\AvianElements.class
 net\passerines\avians\EntityMap.class
 net\passerines\avians\element\elementalDamage\fire\FireDamage$1.class
 net\passerines\avians\element\DamageProcessing\EntityDamageConverter$1.class
 net\passerines\avians\element\DamageProcessing\ElementalDamageEvent.class
+net\passerines\avians\itemcreation\weaponcreation\AttributedItemConfig.class
+net\passerines\avians\hud\HealthDisplay.class
 net\passerines\avians\util\CooldownRunnable.class
 net\passerines\avians\util\Pair.class
 net\passerines\avians\itemcreation\weaponcreation\PolearmConfig.class
@@ -35,7 +38,6 @@ net\passerines\avians\element\elementalDamage\StatusEffects.class
 net\passerines\avians\itemcreation\ItemConfig.class
 net\passerines\avians\element\DamageProcessing\EntityDamageConverter.class
 net\passerines\avians\events\ItemChangeEvent.class
-net\passerines\avians\itemcreation\weaponcreation\WeaponConfig.class
 net\passerines\avians\util\Chat.class
 net\passerines\avians\constants\Stats.class
 net\passerines\avians\element\DamageProcessing\AttackerDamageCalculations.class
