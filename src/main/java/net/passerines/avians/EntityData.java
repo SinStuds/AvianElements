@@ -2,6 +2,7 @@ package net.passerines.avians;
 
 import io.lumine.mythic.api.config.MythicConfig;
 import io.lumine.mythic.core.mobs.ActiveMob;
+import lombok.Getter;
 import net.passerines.avians.element.elementalDamage.StatusEffects;
 import net.passerines.avians.element.elements.Element;
 import org.bukkit.attribute.Attribute;
@@ -9,180 +10,178 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 
 public class EntityData {
-   private float health;
-   private int maxHealth;
-   private float healthRegen;
-   private float mana;
-   private int maxMana;
-   private float manaRegen;
-   private float defense;
-   private int maxDefense;
-   private int strength;
-   private int dexterity;
-   private float speed;
-   private int critDamage;
-   private float critChance;
-   private float critExecutionRate;
-   private StatusEffects statusEffects;
-   private Element element;
-   private Entity entity;
+    private float health;
+    private int maxHealth;
+    private float healthRegen;
 
-   public EntityData(LivingEntity entity) {
-      this.health = (float)((int)entity.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
-   }
+    private float mana;
+    private int maxMana;
+    private float manaRegen;
 
-   public EntityData(ActiveMob entity) {
-      MythicConfig config = entity.getType().getConfig();
-      this.maxHealth = config.getInt("Health", 100);
-      this.health = (float)this.maxHealth;
-      this.maxDefense = config.getInt("Defense", 10);
-      this.maxMana = config.getInt("Mana", 100);
-      this.speed = (float)config.getInt("Speed", 1);
-      this.critChance = (float)config.getDouble("Crits.rate", 10.0D);
-      this.critDamage = config.getInt("Crits.damage", 1);
-      this.critExecutionRate = (float)config.getDouble("Crits.exec", 5.0D);
-      this.element = Element.valueOf(config.getString("Element", Element.FIRE.name()));
-   }
+    private float defense;
+    private int maxDefense;
 
-   public double getHealth() {
-      return (double)this.health;
-   }
+    private int strength;
+    private int dexterity;
+    private float speed;
 
-   public EntityData setHealth(double health) {
-      this.health = (float)health;
-      return this;
-   }
+    private int critDamage;
+    private float critChance;
+    private float critExecutionRate;
+    private StatusEffects statusEffects;
 
-   public int getMaxHealth() {
-      return this.maxHealth;
-   }
+    private Element element;
 
-   public void setMaxHealth(int maxHealth) {
-      if (maxHealth >= 5) {
-         this.maxHealth = maxHealth;
-      }
+    private Entity entity;
+    public EntityData(LivingEntity entity){
+        this.health = (int) entity.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue();
+    }
+    public EntityData(ActiveMob entity){
+        MythicConfig config = entity.getType().getConfig();
+        this.maxHealth = config.getInt("Health", 100);
+        this.health = maxHealth;
+        this.maxDefense = config.getInt("Defense", 10);
+        this.maxMana = config.getInt("Mana", 100);
+        this.speed = config.getInt("Speed", 1);
+        this.critChance = (float) config.getDouble("Crits.rate", 10.0);
+        this.critDamage = config.getInt("Crits.damage", 1);
+        this.critExecutionRate = (float) config.getDouble("Crits.exec", 5);
+        this.element = Element.valueOf(config.getString("Element", Element.FIRE.name()));
+    }
+    public double getHealth() {
+        return health;
+    }
 
-   }
+    public EntityData setHealth(double health) {
+        this.health = (float) health;
+        return this;
+    }
 
-   public float getHealthRegen() {
-      return this.healthRegen;
-   }
+    public int getMaxHealth() {
+        return maxHealth;
+    }
 
-   public void setHealthRegen(float healthRegen) {
-      this.healthRegen = healthRegen;
-   }
+    public void setMaxHealth(int maxHealth) {
+        if(maxHealth >= 5) {
+            this.maxHealth = maxHealth;
+        }
+    }
 
-   public double getMana() {
-      return (double)this.mana;
-   }
+    public float getHealthRegen() {
+        return healthRegen;
+    }
 
-   public EntityData setMana(double mana) {
-      this.mana = (float)mana;
-      return this;
-   }
+    public void setHealthRegen(float healthRegen) {
+        this.healthRegen = healthRegen;
+    }
 
-   public int getMaxMana() {
-      return this.maxMana;
-   }
+    public double getMana() {
+        return mana;
+    }
 
-   public EntityData setMaxMana(int maxMana) {
-      if (maxMana >= 1) {
-         this.maxMana = maxMana;
-      }
+    public EntityData setMana(double mana) {
+        this.mana = (float) mana;
+        return this;
+    }
 
-      return this;
-   }
+    public int getMaxMana() {
+        return maxMana;
+    }
 
-   public double getManaRegen() {
-      return (double)this.manaRegen;
-   }
+    public EntityData setMaxMana(int maxMana) {
+        if(maxMana >= 1){
+            this.maxMana = maxMana;
+        }
+        return this;
+    }
 
-   public EntityData setManaRegen(double manaRegen) {
-      this.manaRegen = (float)manaRegen;
-      return this;
-   }
+    public double getManaRegen() {
+        return manaRegen;
+    }
 
-   public float getDefense() {
-      return this.defense;
-   }
+    public EntityData setManaRegen(double manaRegen) {
+        this.manaRegen = (float) manaRegen;
+        return this;
+    }
 
-   public EntityData setDefense(float defense) {
-      this.defense = defense;
-      return this;
-   }
+    public float getDefense() {
+        return defense;
+    }
 
-   public int getMaxDefense() {
-      return this.maxDefense;
-   }
+    public EntityData setDefense(float defense) {
+        this.defense = defense;
+        return this;
+    }
 
-   public EntityData setMaxDefense(int maxDefense) {
-      this.maxDefense = maxDefense;
-      return this;
-   }
+    public int getMaxDefense() {
+        return maxDefense;
+    }
 
-   public int getStrength() {
-      return this.strength;
-   }
+    public EntityData setMaxDefense(int maxDefense) {
+        this.maxDefense = maxDefense;
+        return this;
+    }
 
-   public EntityData setStrength(int strength) {
-      this.strength = strength;
-      return this;
-   }
+    public int getStrength() {
+        return strength;
+    }
 
-   public int getDexterity() {
-      return this.dexterity;
-   }
+    public EntityData setStrength(int strength) {
+        this.strength = strength;
+        return this;
+    }
 
-   public EntityData setDexterity(int dexterity) {
-      this.dexterity = dexterity;
-      return this;
-   }
+    public int getDexterity() {
+        return dexterity;
+    }
 
-   public double getSpeed() {
-      return (double)this.speed;
-   }
+    public EntityData setDexterity(int dexterity) {
+        this.dexterity = dexterity;
+        return this;
+    }
 
-   public EntityData setSpeed(double speed) {
-      this.speed = (float)speed;
-      return this;
-   }
+    public double getSpeed() {
+        return speed;
+    }
 
-   public int getCritDamage() {
-      return this.critDamage;
-   }
+    public EntityData setSpeed(double speed) {
+        this.speed = (float) speed;
+        return this;
+    }
 
-   public EntityData setCritDamage(int critDamage) {
-      this.critDamage = critDamage;
-      return this;
-   }
+    public int getCritDamage() {
+        return critDamage;
+    }
 
-   public float getCritChance() {
-      return this.critChance;
-   }
+    public EntityData setCritDamage(int critDamage) {
+        this.critDamage = critDamage;
+        return this;
+    }
 
-   public EntityData setCritChance(float critChance) {
-      this.critChance = critChance;
-      return this;
-   }
+    public float getCritChance() {
+        return critChance;
+    }
 
-   public double getCritExecutionRate() {
-      return (double)this.critExecutionRate;
-   }
+    public EntityData setCritChance(float critChance) {
+        this.critChance = critChance;
+        return this;
+    }
 
-   public EntityData setCritExecutionRate(double critExecutionRate) {
-      this.critExecutionRate = (float)critExecutionRate;
-      return this;
-   }
+    public double getCritExecutionRate() {
+        return critExecutionRate;
+    }
 
-   public StatusEffects getStatusEffects() {
-      return this.statusEffects;
-   }
+    public EntityData setCritExecutionRate(double critExecutionRate) {
+        this.critExecutionRate = (float) critExecutionRate;
+        return this;
+    }
+    public StatusEffects getStatusEffects(){return statusEffects;}
 
-   public Element getElement() {
-      return this.element;
-   }
+    public Element getElement() {
+        return element;
+    }
 
-   public void setElement(Element element) {
-      this.element = element;
-   }
+    public void setElement(Element element) {
+        this.element = element;
+    }
 }

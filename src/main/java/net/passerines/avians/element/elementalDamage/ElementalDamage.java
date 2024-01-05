@@ -1,83 +1,81 @@
 package net.passerines.avians.element.elementalDamage;
 
+import net.passerines.avians.constants.AttackType;
 import net.passerines.avians.element.DamageProcessing.ElementalDamageEvent;
 import net.passerines.avians.element.elements.Element;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Entity;
 
+import java.awt.*;
+
 public abstract class ElementalDamage {
-   protected Element element;
-   protected Entity attacker;
-   protected Entity victim;
-   protected float amount;
-   protected String type;
-   private boolean isApplied;
+    protected Element element;
+    protected Entity attacker;
+    protected Entity victim;
+    protected float amount;
 
-   public ElementalDamage(Element element, Entity attacker, Entity victim, float amount) {
-      this.type = "environment";
-      this.isApplied = false;
-      this.element = element;
-      this.attacker = attacker;
-      this.victim = victim;
-      this.amount = amount;
-   }
+    protected String type = AttackType.ENVIRONMENT;
+    private boolean isApplied = false;
 
-   public ElementalDamage(Element element, Entity attacker, Entity victim, float amount, String type) {
-      this(element, attacker, victim, amount);
-      this.type = type;
-   }
+    public ElementalDamage(Element element, Entity attacker, Entity victim, float amount){
+        this.element = element;
+        this.attacker = attacker;
+        this.victim = victim;
+        this.amount = amount;
+    }
+    public ElementalDamage(Element element, Entity attacker, Entity victim, float amount, String type){
+        this(element, attacker, victim, amount);
+        this.type = type;
 
-   public abstract void onHit();
+    }
 
-   public Element getElement() {
-      return this.element;
-   }
+    public abstract void onHit();
 
-   public ElementalDamage setElement(Element element) {
-      this.element = element;
-      return this;
-   }
+    public Element getElement() {
+        return element;
+    }
 
-   public Entity getAttacker() {
-      return this.attacker;
-   }
+    public ElementalDamage setElement(Element element) {
+        this.element = element;
+        return this;
+    }
 
-   public ElementalDamage setAttacker(Entity attacker) {
-      this.attacker = attacker;
-      return this;
-   }
+    public Entity getAttacker() {
+        return attacker;
+    }
 
-   public Entity getVictim() {
-      return this.victim;
-   }
+    public ElementalDamage setAttacker(Entity attacker) {
+        this.attacker = attacker;
+        return this;
+    }
 
-   public ElementalDamage setVictim(Entity victim) {
-      this.victim = victim;
-      return this;
-   }
+    public Entity getVictim() {
+        return victim;
+    }
 
-   public float getAmount() {
-      return this.amount;
-   }
+    public ElementalDamage setVictim(Entity victim) {
+        this.victim = victim;
+        return this;
+    }
 
-   public ElementalDamage setAmount(float amount) {
-      this.amount = amount;
-      return this;
-   }
+    public float getAmount() {
+        return amount;
+    }
 
-   public String getType() {
-      return this.type;
-   }
-
-   public void setType(String type) {
-      this.type = type;
-   }
-
-   public void apply() {
-      if (!this.isApplied) {
-         this.isApplied = true;
-         Bukkit.getPluginManager().callEvent(new ElementalDamageEvent(this));
-      }
-
-   }
+    public ElementalDamage setAmount(float amount) {
+        this.amount = amount;
+        return this;
+    }
+    public String getType() {
+        return type;
+    }
+    public void setType(String type) {
+        this.type = type;
+    }
+    public void apply(){
+        if(!isApplied) {
+            isApplied = true;
+            Bukkit.getPluginManager().callEvent(new ElementalDamageEvent(this));
+        }
+    }
 }

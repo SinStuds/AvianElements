@@ -1,49 +1,42 @@
 package net.passerines.avians.events.slotstatsystem;
 
-import java.util.HashMap;
+import com.comphenix.protocol.PacketType;
 import net.passerines.avians.EntityMap;
 import net.passerines.avians.PlayerData;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-public class SlotHashmap {
-   private final Player player;
-   private HashMap<SlotHashmap.Slot, ItemStack> slots;
+import java.util.HashMap;
 
-   public SlotHashmap(Player player) {
-      this.player = player;
-      this.slots = new HashMap();
-   }
+public class  SlotHashmap {
+    private final Player player;
+    public enum Slot {
+        HELMET,
+        CHESTPLATE,
+        LEGGINGS,
+        BOOTS,
+        MAINHAND,
+        OFFHAND,
 
-   public ItemStack getItemAtSlot(SlotHashmap.Slot slot) {
-      return (ItemStack)this.slots.get(slot);
-   }
-
-   public void setSlots(SlotHashmap.Slot slot, ItemStack item) {
-      this.slots.put(slot, item);
-   }
-
-   public void setAllSlots() {
-      PlayerData playerData = (PlayerData)EntityMap.get(this.player);
-      playerData.getSlotHashmap().setSlots(SlotHashmap.Slot.HELMET, this.player.getInventory().getHelmet());
-      playerData.getSlotHashmap().setSlots(SlotHashmap.Slot.CHESTPLATE, this.player.getInventory().getChestplate());
-      playerData.getSlotHashmap().setSlots(SlotHashmap.Slot.LEGGINGS, this.player.getInventory().getLeggings());
-      playerData.getSlotHashmap().setSlots(SlotHashmap.Slot.BOOTS, this.player.getInventory().getBoots());
-      playerData.getSlotHashmap().setSlots(SlotHashmap.Slot.MAINHAND, this.player.getInventory().getItemInMainHand());
-      playerData.getSlotHashmap().setSlots(SlotHashmap.Slot.OFFHAND, this.player.getInventory().getItemInOffHand());
-   }
-
-   public static enum Slot {
-      HELMET,
-      CHESTPLATE,
-      LEGGINGS,
-      BOOTS,
-      MAINHAND,
-      OFFHAND;
-
-      // $FF: synthetic method
-      private static SlotHashmap.Slot[] $values() {
-         return new SlotHashmap.Slot[]{HELMET, CHESTPLATE, LEGGINGS, BOOTS, MAINHAND, OFFHAND};
-      }
-   }
+    }
+    private HashMap<Slot, ItemStack> slots;
+    public SlotHashmap(Player player){
+        this.player=player;
+        slots = new HashMap<>();
+    }
+    public ItemStack getItemAtSlot(Slot slot){
+        return slots.get(slot);
+    }
+    public void setSlots(Slot slot, ItemStack item) {
+        slots.put(slot, item);
+    }
+    public void setAllSlots(){
+        PlayerData playerData = (PlayerData) EntityMap.get(player);
+        playerData.getSlotHashmap().setSlots(SlotHashmap.Slot.HELMET, player.getInventory().getHelmet());
+        playerData.getSlotHashmap().setSlots(SlotHashmap.Slot.CHESTPLATE, player.getInventory().getChestplate());
+        playerData.getSlotHashmap().setSlots(SlotHashmap.Slot.LEGGINGS, player.getInventory().getLeggings());
+        playerData.getSlotHashmap().setSlots(SlotHashmap.Slot.BOOTS, player.getInventory().getBoots());
+        playerData.getSlotHashmap().setSlots(SlotHashmap.Slot.MAINHAND, player.getInventory().getItemInMainHand());
+        playerData.getSlotHashmap().setSlots(SlotHashmap.Slot.OFFHAND, player.getInventory().getItemInOffHand());
+    }
 }

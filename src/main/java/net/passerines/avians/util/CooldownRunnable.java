@@ -1,83 +1,75 @@
 package net.passerines.avians.util;
 
-import java.util.HashMap;
-import java.util.Iterator;
 import net.passerines.avians.AvianElements;
 import org.bukkit.Bukkit;
 
+import java.util.HashMap;
+
 public class CooldownRunnable<T> {
-   private int defaultCooldown;
-   private HashMap<T, Pair<Integer, Integer>> cooldowns = new HashMap();
 
-   public CooldownRunnable(int defaultCooldownTicks) {
-      this.defaultCooldown = defaultCooldownTicks;
-   }
+    private int defaultCooldown;
+    private HashMap<T, Pair<Integer, Integer>> cooldowns;
 
-   public void add(T target) {
-      this.add(target, this.defaultCooldown);
-   }
+    public CooldownRunnable(int defaultCooldownTicks) {
+        cooldowns = new HashMap<>();
+        this.defaultCooldown = defaultCooldownTicks;
+    }
 
-   public void add(T target, int ticks) {
-      this.add(target, ticks, (Runnable)null);
-   }
+    public void add(T target) {
+        add(target, defaultCooldown);
+    }
+    public void add(T target, int ticks) {
+        add(target, ticks, null);
+    }
+    public void add(T target, Runnable onEnd) {
+        add(target, defaultCooldown, onEnd);
+    }
+    public void add(T target, int ticks, Runnable onEnd) {
+        if(cooldowns.containsKey(target)) {
+            Bukkit.getScheduler().cancelTask(cooldowns.get(target).getKey());
+        }
+        cooldowns.put(target, new Pair<>(
+                Bukkit.getScheduler().scheduleSyncDelayedTask(AvianElements.inst(), () -> {
+                    cooldowns.remove(target);
+                    if(onEnd!=null) onEnd.run();
+                }, ticks), Bukkit.getCurrentTick() + ticks
+        ));
+    }
+    public void appendTask(T target, Runnable onEnd) {
+        if(cooldowns.containsKey(target)) {
+            Bukkit.getScheduler().cancelTask(cooldowns.get(target).getKey());
+            cooldowns.put(target, new Pair<>(
+                    Bukkit.getScheduler().scheduleSyncDelayedTask(AvianElements.inst(), () -> {
+                        cooldowns.remove(target);
+                        if(onEnd!=null) onEnd.run();
+                    }, getTicksLeft(target)), Bukkit.getCurrentTick() + getTicksLeft(target)
+            ));
+        }
+    }
 
-   public void add(T target, Runnable onEnd) {
-      this.add(target, this.defaultCooldown, onEnd);
-   }
+    public boolean isOffCooldown(T target) {
+        return !cooldowns.containsKey(target);
+    }
+    public boolean isOnCooldown(T target) {
+        return cooldowns.containsKey(target);
+    }
+    public int getTicksLeft(T target) {
+        if(cooldowns.containsKey(target)) {
+            return cooldowns.get(target).getValue() - Bukkit.getCurrentTick();
+        } else {
+            return -1;
+        }
+    }
 
-   public void add(T target, int ticks, Runnable onEnd) {
-      if (this.cooldowns.containsKey(target)) {
-         Bukkit.getScheduler().cancelTask((Integer)((Pair)this.cooldowns.get(target)).getKey());
-      }
-
-      this.cooldowns.put(target, new Pair(Bukkit.getScheduler().scheduleSyncDelayedTask(AvianElements.inst(), () -> {
-         this.cooldowns.remove(target);
-         if (onEnd != null) {
-            onEnd.run();
-         }
-
-      }, (long)ticks), Bukkit.getCurrentTick() + ticks));
-   }
-
-   public void appendTask(T target, Runnable onEnd) {
-      if (this.cooldowns.containsKey(target)) {
-         Bukkit.getScheduler().cancelTask((Integer)((Pair)this.cooldowns.get(target)).getKey());
-         this.cooldowns.put(target, new Pair(Bukkit.getScheduler().scheduleSyncDelayedTask(AvianElements.inst(), () -> {
-            this.cooldowns.remove(target);
-            if (onEnd != null) {
-               onEnd.run();
+    public void clear() {
+        for(T target : cooldowns.keySet()) {
+            if (cooldowns.containsKey(target)) {
+                Bukkit.getScheduler().cancelTask(cooldowns.get(target).getKey());
             }
+        }
+    }
 
-         }, (long)this.getTicksLeft(target)), Bukkit.getCurrentTick() + this.getTicksLeft(target)));
-      }
-
-   }
-
-   public boolean isOffCooldown(T target) {
-      return !this.cooldowns.containsKey(target);
-   }
-
-   public boolean isOnCooldown(T target) {
-      return this.cooldowns.containsKey(target);
-   }
-
-   public int getTicksLeft(T target) {
-      return this.cooldowns.containsKey(target) ? (Integer)((Pair)this.cooldowns.get(target)).getValue() - Bukkit.getCurrentTick() : -1;
-   }
-
-   public void clear() {
-      Iterator var1 = this.cooldowns.keySet().iterator();
-
-      while(var1.hasNext()) {
-         T target = var1.next();
-         if (this.cooldowns.containsKey(target)) {
-            Bukkit.getScheduler().cancelTask((Integer)((Pair)this.cooldowns.get(target)).getKey());
-         }
-      }
-
-   }
-
-   public int getDefaultCooldown() {
-      return this.defaultCooldown;
-   }
+    public int getDefaultCooldown() {
+        return defaultCooldown;
+    }
 }

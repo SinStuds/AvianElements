@@ -7,41 +7,43 @@ import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
 public class ElementalDamageEvent extends Event implements Cancellable {
-   private static final HandlerList HANDLER_LIST = new HandlerList();
-   private boolean cancelled;
-   private ElementalDamage elementalDamage;
+    private static final HandlerList HANDLER_LIST = new HandlerList();
 
-   public ElementalDamageEvent(ElementalDamage elementalDamage) {
-      this.elementalDamage = elementalDamage;
-   }
+    private boolean cancelled;
+    private ElementalDamage elementalDamage;
 
-   public ElementalDamage getElementalDamage() {
-      return this.elementalDamage;
-   }
+    public ElementalDamageEvent(ElementalDamage elementalDamage) {
+        this.elementalDamage = elementalDamage;
+    }
 
-   public ElementalDamageEvent setElementalDamage(ElementalDamage elementalDamage) {
-      this.elementalDamage = elementalDamage;
-      return this;
-   }
+    public ElementalDamage getElementalDamage() {
+        return elementalDamage;
+    }
 
-   public String getType() {
-      return this.elementalDamage.getType();
-   }
+    public ElementalDamageEvent setElementalDamage(ElementalDamage elementalDamage) {
+        this.elementalDamage = elementalDamage;
+        return this;
+    }
 
-   public boolean isCancelled() {
-      return this.cancelled;
-   }
+    public String getType() {
+        return elementalDamage.getType();
+    }
 
-   public void setCancelled(boolean cancel) {
-      this.cancelled = cancel;
-   }
+    @Override
+    public boolean isCancelled() {
+        return cancelled;
+    }
 
-   @NotNull
-   public HandlerList getHandlers() {
-      return HANDLER_LIST;
-   }
+    @Override
+    public void setCancelled(boolean cancel) {
+        cancelled = cancel;
+    }
 
-   public static HandlerList getHandlerList() {
-      return HANDLER_LIST;
-   }
+    @Override
+    public @NotNull HandlerList getHandlers() {
+        return HANDLER_LIST;
+    }
+    public static HandlerList getHandlerList() {
+        return HANDLER_LIST;
+    }
 }

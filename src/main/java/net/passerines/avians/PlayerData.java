@@ -2,157 +2,162 @@ package net.passerines.avians;
 
 import net.passerines.avians.constants.Stats;
 import net.passerines.avians.events.slotstatsystem.SlotHashmap;
-import org.bukkit.NamespacedKey;
-import org.bukkit.entity.LivingEntity;
+import net.passerines.avians.itemcreation.ItemConfig;
+import net.passerines.avians.itemcreation.weaponcreation.WeaponConfig;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataType;
 
-public class PlayerData extends EntityData {
-   private SlotHashmap slotHashmap;
-   private int bladedMastery;
-   private int bluntMastery;
-   private int pointedMastery;
-   private int rangedMastery;
-   private int arcaneMastery;
-   private int trapDurationBonus;
-   private int trapDamageBonus;
-   private int minionDamageBonus;
-   private int minionHealthBonus;
-   private int minionDefenseBonus;
-   private int minionElemenalBonus;
-   private int maxMinions;
-   private Player player;
+public class PlayerData extends EntityData{
 
-   public PlayerData(Player player) {
-      super((LivingEntity)player);
-      this.player = player;
-      this.slotHashmap = new SlotHashmap(player);
-   }
+    private SlotHashmap slotHashmap;
+    private int bladedMastery;
+    private int bluntMastery;
+    private int pointedMastery;
+    private int rangedMastery;
+    private int arcaneMastery;
 
-   public void calculate(ItemStack item) {
-      if (item != null && item.getItemMeta() != null) {
-         this.setMaxHealth(this.getMaxHealth() + (Integer)item.getItemMeta().getPersistentDataContainer().getOrDefault((NamespacedKey)Stats.HEALTH.getKey(), (PersistentDataType)Stats.HEALTH.getValue(), 0));
-         this.setHealthRegen(this.getHealthRegen() + (Float)item.getItemMeta().getPersistentDataContainer().getOrDefault((NamespacedKey)Stats.HEALTH_REGEN.getKey(), (PersistentDataType)Stats.HEALTH_REGEN.getValue(), 0.0F));
-         this.setStrength(this.getStrength() + (Integer)item.getItemMeta().getPersistentDataContainer().getOrDefault((NamespacedKey)Stats.STRENGTH.getKey(), (PersistentDataType)Stats.STRENGTH.getValue(), 0));
-         this.setDexterity(this.getDexterity() + (Integer)item.getItemMeta().getPersistentDataContainer().getOrDefault((NamespacedKey)Stats.DEXTERITY.getKey(), (PersistentDataType)Stats.DEXTERITY.getValue(), 0));
-         this.setMaxDefense(this.getMaxDefense() + (Integer)item.getItemMeta().getPersistentDataContainer().getOrDefault((NamespacedKey)Stats.DEFENSE.getKey(), (PersistentDataType)Stats.DEFENSE.getValue(), 0));
-         this.setCritChance(this.getCritChance() + (Float)item.getItemMeta().getPersistentDataContainer().getOrDefault((NamespacedKey)Stats.CRITCHANCE.getKey(), (PersistentDataType)Stats.CRITCHANCE.getValue(), 0.0F));
-         this.setCritDamage(this.getCritDamage() + (Integer)item.getItemMeta().getPersistentDataContainer().getOrDefault((NamespacedKey)Stats.CRITDAMAGE.getKey(), (PersistentDataType)Stats.CRITDAMAGE.getValue(), 0));
-         this.setCritExecutionRate(this.getCritExecutionRate() + (double)(Float)item.getItemMeta().getPersistentDataContainer().getOrDefault((NamespacedKey)Stats.CRITEXECUTIONRATE.getKey(), (PersistentDataType)Stats.CRITEXECUTIONRATE.getValue(), 0.0F));
-      }
+    private int trapDurationBonus;
+    private int trapDamageBonus;
+    private int minionDamageBonus;
+    private int minionHealthBonus;
+    private int minionDefenseBonus;
+    private int minionElemenalBonus;
+    private int maxMinions;
+    private Player player;
 
-   }
+    public PlayerData(Player player) {
+        super(player);
+        this.player = player;
+        slotHashmap = new SlotHashmap(player);
+    }
+    public void calculate(ItemStack item){
+        if(item != null && item.getItemMeta() != null) {
+            /*player.sendMessage("Max Health " + (getMaxHealth() + item.getItemMeta().getPersistentDataContainer().getOrDefault(Stats.HEALTH.getKey(), Stats.HEALTH.getValue(),0)));
+            player.sendMessage("Health Regen " + (getHealthRegen() + item.getItemMeta().getPersistentDataContainer().getOrDefault(Stats.HEALTH_REGEN.getKey(), Stats.HEALTH_REGEN.getValue(),0f)));
+            player.sendMessage("Strength " + (getStrength() + item.getItemMeta().getPersistentDataContainer().getOrDefault(Stats.STRENGTH.getKey(), Stats.STRENGTH.getValue(),0)));
+            player.sendMessage("Max Defense " + (getMaxDefense() + item.getItemMeta().getPersistentDataContainer().getOrDefault(Stats.DEFENSE.getKey(), Stats.DEFENSE.getValue(),0)));*/
+            setMaxHealth(getMaxHealth() + item.getItemMeta().getPersistentDataContainer().getOrDefault(Stats.HEALTH.getKey(), Stats.HEALTH.getValue(),0));
+            setHealthRegen(getHealthRegen() + item.getItemMeta().getPersistentDataContainer().getOrDefault(Stats.HEALTH_REGEN.getKey(), Stats.HEALTH_REGEN.getValue(),0f));
+            setStrength(getStrength() + item.getItemMeta().getPersistentDataContainer().getOrDefault(Stats.STRENGTH.getKey(), Stats.STRENGTH.getValue(),0));
+            setDexterity(getDexterity() + item.getItemMeta().getPersistentDataContainer().getOrDefault(Stats.DEXTERITY.getKey(), Stats.DEXTERITY.getValue(),0));
+            setMaxDefense(getMaxDefense() + item.getItemMeta().getPersistentDataContainer().getOrDefault(Stats.DEFENSE.getKey(), Stats.DEFENSE.getValue(),0));
+            setCritChance(getCritChance() + item.getItemMeta().getPersistentDataContainer().getOrDefault(Stats.CRITCHANCE.getKey(), Stats.CRITCHANCE.getValue(),0f));
+            setCritDamage(getCritDamage() + item.getItemMeta().getPersistentDataContainer().getOrDefault(Stats.CRITDAMAGE.getKey(), Stats.CRITDAMAGE.getValue(),0));
+            setCritExecutionRate(getCritExecutionRate() + item.getItemMeta().getPersistentDataContainer().getOrDefault(Stats.CRITEXECUTIONRATE.getKey(), Stats.CRITEXECUTIONRATE.getValue(),0f));
+        }
+    }
 
-   public int getBladedMastery() {
-      return this.bladedMastery;
-   }
 
-   public PlayerData setBladedMastery(int bladedMastery) {
-      this.bladedMastery = bladedMastery;
-      return this;
-   }
+    public int getBladedMastery() {
+        return bladedMastery;
+    }
 
-   public int getBluntMastery() {
-      return this.bluntMastery;
-   }
+    public PlayerData setBladedMastery(int bladedMastery) {
+        this.bladedMastery = bladedMastery;
+        return this;
+    }
 
-   public PlayerData setBluntMastery(int bluntMastery) {
-      this.bluntMastery = bluntMastery;
-      return this;
-   }
+    public int getBluntMastery() {
+        return bluntMastery;
+    }
 
-   public int getRangedMastery() {
-      return this.rangedMastery;
-   }
+    public PlayerData setBluntMastery(int bluntMastery) {
+        this.bluntMastery = bluntMastery;
+        return this;
+    }
 
-   public PlayerData setRangedMastery(int rangedMastery) {
-      this.rangedMastery = rangedMastery;
-      return this;
-   }
+    public int getRangedMastery() {
+        return rangedMastery;
+    }
 
-   public int getArcaneMastery() {
-      return this.arcaneMastery;
-   }
+    public PlayerData setRangedMastery(int rangedMastery) {
+        this.rangedMastery = rangedMastery;
+        return this;
+    }
 
-   public PlayerData setArcaneMastery(int arcaneMastery) {
-      this.arcaneMastery = arcaneMastery;
-      return this;
-   }
+    public int getArcaneMastery() {
+        return arcaneMastery;
+    }
 
-   public int getPointedMastery() {
-      return this.pointedMastery;
-   }
+    public PlayerData setArcaneMastery(int arcaneMastery) {
+        this.arcaneMastery = arcaneMastery;
+        return this;
+    }
 
-   public PlayerData setPointedMastery(int pointedMastery) {
-      this.pointedMastery = pointedMastery;
-      return this;
-   }
+    public int getPointedMastery() {
+        return pointedMastery;
+    }
 
-   public int getTrapDurationBonus() {
-      return this.trapDurationBonus;
-   }
+    public PlayerData setPointedMastery(int pointedMastery) {
+        this.pointedMastery = pointedMastery;
+        return this;
+    }
 
-   public PlayerData setTrapDurationBonus(int trapDurationBonus) {
-      this.trapDurationBonus = trapDurationBonus;
-      return this;
-   }
+    public int getTrapDurationBonus() {
+        return trapDurationBonus;
+    }
 
-   public int getTrapDamageBonus() {
-      return this.trapDamageBonus;
-   }
+    public PlayerData setTrapDurationBonus(int trapDurationBonus) {
+        this.trapDurationBonus = trapDurationBonus;
+        return this;
+    }
 
-   public PlayerData setTrapDamageBonus(int trapDamageBonus) {
-      this.trapDamageBonus = trapDamageBonus;
-      return this;
-   }
+    public int getTrapDamageBonus() {
+        return trapDamageBonus;
+    }
 
-   public int getMinionDamageBonus() {
-      return this.minionDamageBonus;
-   }
+    public PlayerData setTrapDamageBonus(int trapDamageBonus) {
+        this.trapDamageBonus = trapDamageBonus;
+        return this;
+    }
 
-   public PlayerData setMinionDamageBonus(int minionDamageBonus) {
-      this.minionDamageBonus = minionDamageBonus;
-      return this;
-   }
+    public int getMinionDamageBonus() {
+        return minionDamageBonus;
+    }
 
-   public int getMinionHealthBonus() {
-      return this.minionHealthBonus;
-   }
+    public PlayerData setMinionDamageBonus(int minionDamageBonus) {
+        this.minionDamageBonus = minionDamageBonus;
+        return this;
+    }
 
-   public PlayerData setMinionHealthBonus(int minionHealthBonus) {
-      this.minionHealthBonus = minionHealthBonus;
-      return this;
-   }
+    public int getMinionHealthBonus() {
+        return minionHealthBonus;
+    }
 
-   public int getMinionDefenseBonus() {
-      return this.minionDefenseBonus;
-   }
+    public PlayerData setMinionHealthBonus(int minionHealthBonus) {
+        this.minionHealthBonus = minionHealthBonus;
+        return this;
+    }
 
-   public PlayerData setMinionDefenseBonus(int minionDefenseBonus) {
-      this.minionDefenseBonus = minionDefenseBonus;
-      return this;
-   }
+    public int getMinionDefenseBonus() {
+        return minionDefenseBonus;
+    }
 
-   public int getMinionElemenalBonus() {
-      return this.minionElemenalBonus;
-   }
+    public PlayerData setMinionDefenseBonus(int minionDefenseBonus) {
+        this.minionDefenseBonus = minionDefenseBonus;
+        return this;
+    }
 
-   public PlayerData setMinionElemenalBonus(int minionElemenalBonus) {
-      this.minionElemenalBonus = minionElemenalBonus;
-      return this;
-   }
+    public int getMinionElemenalBonus() {
+        return minionElemenalBonus;
+    }
 
-   public int getMaxMinions() {
-      return this.maxMinions;
-   }
+    public PlayerData setMinionElemenalBonus(int minionElemenalBonus) {
+        this.minionElemenalBonus = minionElemenalBonus;
+        return this;
+    }
 
-   public PlayerData setMaxMinions(int maxMinions) {
-      this.maxMinions = maxMinions;
-      return this;
-   }
+    public int getMaxMinions() {
+        return maxMinions;
+    }
 
-   public SlotHashmap getSlotHashmap() {
-      return this.slotHashmap;
-   }
+    public PlayerData setMaxMinions(int maxMinions) {
+        this.maxMinions = maxMinions;
+        return this;
+    }
+
+    public SlotHashmap getSlotHashmap() {
+        return slotHashmap;
+    }
 }
