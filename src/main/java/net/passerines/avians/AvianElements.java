@@ -10,6 +10,7 @@ import net.passerines.avians.element.DamageProcessing.EntityDamageConverter;
 import net.passerines.avians.element.DamageProcessing.VictimCalculations;
 import net.passerines.avians.events.EquipmentChangeHandler;
 import net.passerines.avians.events.ItemChangeListener;
+import net.passerines.avians.hud.HealthDisplay;
 import net.passerines.avians.itemcreation.ItemManager;
 import net.passerines.avians.naturalhealth.NaturalHealthRegen;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -44,6 +45,7 @@ public class AvianElements extends JavaPlugin {
       new EquipmentChangeHandler();
       new DeathEventListener();
       new NaturalHealthRegen();
+      new HealthDisplay();
    }
 
    public static AvianElements inst() {
